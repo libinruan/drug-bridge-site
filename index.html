@@ -25,10 +25,12 @@
     .site-nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 20px 56px; background: var(--color-bg); border-bottom: 1px solid var(--color-divider); }
     .site-brand { font-family: var(--font-heading); font-weight: 700; font-size: 24px; letter-spacing: 0.03em; text-transform: uppercase; cursor: pointer; }
     .site-brand span { color: var(--color-accent-700); }
-    .site-links { display: flex; gap: 4px; }
+    .site-links { display: flex; align-items: center; gap: 4px; }
     .site-link { font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 8px 16px; border: 1px solid transparent; cursor: pointer; background: none; color: color-mix(in srgb, var(--color-text) 65%, transparent); }
     .site-link:hover { color: var(--color-accent-900); }
     .site-link.active { color: var(--color-accent-900); border-color: var(--color-accent-700); }
+    .lang-toggle { font-family: var(--font-body); font-size: 13px; font-weight: 700; padding: 7px 14px; margin-left: 12px; border: 1px solid var(--color-accent-700); border-radius: 999px; cursor: pointer; background: none; color: var(--color-accent-700); }
+    .lang-toggle:hover { background: var(--color-accent-700); color: var(--color-bg); }
     .page { max-width: 1040px; margin: 0 auto; padding: 100px 56px 120px; }
     .eyebrow { font-family: var(--font-heading); font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); margin: 0 0 16px; }
     .h1 { font-family: var(--font-heading); font-weight: 700; font-size: 52px; line-height: 1.1; margin: 0 0 24px; max-width: 820px; }
@@ -71,8 +73,8 @@
     .contact-card a { color: var(--color-bg); font-weight: 700; }
     .cta-band { margin-top: 96px; padding: 56px; background: var(--color-neutral-200); border: 1px solid var(--color-divider); text-align: center; }
     .cta-band p { color: color-mix(in srgb, var(--color-text) 70%, transparent); font-size: 16px; margin: 0 0 24px; max-width: 560px; margin-left: auto; margin-right: auto; }
-    .site-footer { border-top: 1px solid var(--color-divider); padding: 32px 56px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 50%, transparent); display: flex; justify-content: space-between; }
-    @media (max-width: 860px) { .stat-row, .pillar-row, .grid-3, .ask-row { grid-template-columns: 1fr; } }
+    .site-footer { border-top: 1px solid var(--color-divider); padding: 32px 56px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 50%, transparent); display: flex; justify-content: space-between; gap: 24px; }
+    @media (max-width: 860px) { .stat-row, .pillar-row, .grid-3, .ask-row { grid-template-columns: 1fr; } .site-footer { flex-direction: column; } }
   </style>
 </helmet>
 
@@ -82,184 +84,345 @@
     <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
       <button class="{{ item.cls }}" onClick="{{ item.go }}">{{ item.label }}</button>
     </sc-for>
+    <button class="lang-toggle" onClick="{{ toggleLang }}">{{ langToggleLabel }}</button>
   </div>
 </nav>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div class="page" data-screen-label="Home">
-  <p class="eyebrow">Oral STAT6 Degrader Platform</p>
-  <h1 class="h1">A pill for atopic dermatitis, engineered to match what today's injectables can do.</h1>
-  <p class="lede">QRK-005 and QRK-007 are DrugBridge's oral small-molecule STAT6 degraders — built to bring biologic-level efficacy to a once-daily pill, in a validated and increasingly sought-after drug class.</p>
+  <p class="eyebrow">{{ t.home.eyebrow }}</p>
+  <h1 class="h1">{{ t.home.h1 }}</h1>
+  <p class="lede">{{ t.home.lede }}</p>
   <div class="btn-row">
-    <button class="btn btn-primary" style="white-space: nowrap;" onClick="{{ goPartner }}">Partnership inquiries</button>
-    <button class="btn btn-secondary" onClick="{{ goScience }}">How it works</button>
+    <button class="btn btn-primary" style="white-space: nowrap;" onClick="{{ goPartner }}">{{ t.home.btnPartner }}</button>
+    <button class="btn btn-secondary" onClick="{{ goScience }}">{{ t.home.btnScience }}</button>
   </div>
 
   <div class="stat-row">
-    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">Oral</div><div class="stat-lbl">Once-daily pill, not an injection</div></div>
-    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">2 candidates</div><div class="stat-lbl">Complementary preclinical profiles, one program</div></div>
-    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">Pre-IND</div><div class="stat-lbl">IND submission targeted 2027, entering a validated field</div></div>
+    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">{{ t.home.stat1Num }}</div><div class="stat-lbl">{{ t.home.stat1Lbl }}</div></div>
+    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">{{ t.home.stat2Num }}</div><div class="stat-lbl">{{ t.home.stat2Lbl }}</div></div>
+    <div class="stat-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="stat-num">{{ t.home.stat3Num }}</div><div class="stat-lbl">{{ t.home.stat3Lbl }}</div></div>
   </div>
 
   <div class="section">
-    <h2 class="h2">Why now</h2>
-    <p class="prose">Atopic dermatitis is driven by a well-understood inflammatory signal — one that current biologic and oral therapies each address with real trade-offs, between delivery burden and broader safety exposure. QRK-005/007 are designed to intervene precisely at that signal's convergence point, as a pill.</p>
-    <p class="prose">This is not an unproven idea: the broader field of oral STAT6-targeted therapies has drawn major pharma investment and encouraging early clinical signals over the past two years. DrugBridge is entering a category the market has already validated, with a differentiated pair of candidates and a clear path to IND.</p>
+    <h2 class="h2">{{ t.home.whyNowH2 }}</h2>
+    <p class="prose">{{ t.home.whyNowP1 }}</p>
+    <p class="prose">{{ t.home.whyNowP2 }}</p>
   </div>
 
   <div class="cta-band">
-    <h2 class="h2" style="font-size:26px;">Want the full data package?</h2>
-    <p>Our complete preclinical dataset — efficacy, pharmacokinetics, and safety — is available to partners under a mutual CDA.</p>
-    <button class="btn btn-primary" onClick="{{ goPartner }}">Get in touch</button>
+    <h2 class="h2" style="font-size:26px;">{{ t.home.ctaH2 }}</h2>
+    <p>{{ t.home.ctaP }}</p>
+    <button class="btn btn-primary" onClick="{{ goPartner }}">{{ t.home.ctaBtn }}</button>
   </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isScience }}" hint-placeholder-val="{{ false }}">
 <div class="page" data-screen-label="Science">
-  <p class="eyebrow">The Science</p>
-  <h1 class="h1">One target, engineered for precision</h1>
-  <p class="lede">Two signaling proteins, IL-4 and IL-13, drive the inflammation behind atopic dermatitis. Both converge on a single downstream switch: STAT6. QRK-005 and QRK-007 are designed to shut that switch off directly.</p>
+  <p class="eyebrow">{{ t.science.eyebrow }}</p>
+  <h1 class="h1">{{ t.science.h1 }}</h1>
+  <p class="lede">{{ t.science.lede }}</p>
 
   <div class="pillar-row">
     <div class="pillar">
-      <h3>Targeted at the source</h3>
-      <p>By acting on STAT6 itself, one molecule addresses what upstream biologic and kinase-inhibitor approaches currently split between two different drug classes.</p>
+      <h3>{{ t.science.pillar1H3 }}</h3>
+      <p>{{ t.science.pillar1P }}</p>
     </div>
     <div class="pillar">
-      <h3>Built for selectivity</h3>
-      <p>Both candidates are engineered to act on STAT6 with high specificity, sparing related signaling proteins — the design principle behind a cleaner safety profile than broad-spectrum alternatives.</p>
+      <h3>{{ t.science.pillar2H3 }}</h3>
+      <p>{{ t.science.pillar2P }}</p>
     </div>
     <div class="pillar">
-      <h3>Oral by design</h3>
-      <p>A small molecule taken as a pill, aimed at delivering biologic-level efficacy without an injection.</p>
+      <h3>{{ t.science.pillar3H3 }}</h3>
+      <p>{{ t.science.pillar3P }}</p>
     </div>
   </div>
 
   <div class="section">
-    <h2 class="h2">A validated approach</h2>
-    <p class="prose">Oral STAT6-targeted therapy is an active, closely watched category: multiple programs are in clinical and preclinical development, several already backed by major pharmaceutical partnerships. Public clinical signals from the most advanced program in the class — degradation of the target protein alongside meaningful improvement in disease severity — support the underlying biology DrugBridge's candidates are built on.</p>
-    <p class="simple-note">Full preclinical data — potency, pharmacokinetics, tissue distribution, and safety pharmacology — is shared with partners under a mutual CDA.</p>
+    <h2 class="h2">{{ t.science.validatedH2 }}</h2>
+    <p class="prose">{{ t.science.validatedP }}</p>
+    <p class="simple-note">{{ t.science.note }}</p>
   </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isPipeline }}" hint-placeholder-val="{{ false }}">
 <div class="page" data-screen-label="Pipeline">
-  <p class="eyebrow">Pipeline &amp; Landscape</p>
-  <h1 class="h1">A crowded field, an open lead</h1>
-  <p class="lede">Approved biologics and oral therapies for atopic dermatitis each leave something on the table — delivery convenience, or breadth of safety exposure. A wave of oral STAT6 programs, DrugBridge's included, is racing to close that gap.</p>
+  <p class="eyebrow">{{ t.pipeline.eyebrow }}</p>
+  <h1 class="h1">{{ t.pipeline.h1 }}</h1>
+  <p class="lede">{{ t.pipeline.lede }}</p>
 
   <div class="compare-row">
-    <div class="compare-item"><div class="compare-name">Injectable biologics</div><div class="compare-desc">Established efficacy and safety, but require regular injection — a real burden for chronic daily use.</div></div>
-    <div class="compare-item"><div class="compare-name">Oral JAK inhibitors</div><div class="compare-desc">Fast-acting and convenient, but broad-spectrum action carries a boxed safety warning.</div></div>
-    <div class="compare-item hl"><div class="compare-name">Oral STAT6 degraders</div><div class="compare-desc">The category DrugBridge is building in — designed for injectable-level efficacy with the convenience and, potentially, the safety profile of a targeted pill.</div></div>
+    <div class="compare-item"><div class="compare-name">{{ t.pipeline.compare1Name }}</div><div class="compare-desc">{{ t.pipeline.compare1Desc }}</div></div>
+    <div class="compare-item"><div class="compare-name">{{ t.pipeline.compare2Name }}</div><div class="compare-desc">{{ t.pipeline.compare2Desc }}</div></div>
+    <div class="compare-item hl"><div class="compare-name">{{ t.pipeline.compare3Name }}</div><div class="compare-desc">{{ t.pipeline.compare3Desc }}</div></div>
   </div>
 
   <div class="section">
-    <h2 class="h2">A field pharma is already betting on</h2>
-    <p class="prose">Six competing oral STAT6 programs are in development worldwide. Four are already partnered with large pharmaceutical companies — most secured before any Phase 2 data existed, proof the category has real buyer demand. The most clinically advanced program remains independently owned by its developer, and has reported encouraging Phase 1 results while now enrolling Phase 2. DrugBridge's QRK-005/007 are unpartnered and pre-IND, competing on data quality and deal economics in a category the market has already validated.</p>
-    <p class="simple-note">A full breakdown of competing programs, deal terms, and public clinical data is available on request. Competitive landscape reflects publicly available information as of August 2026.</p>
+    <h2 class="h2">{{ t.pipeline.bettingH2 }}</h2>
+    <p class="prose">{{ t.pipeline.bettingP }}</p>
+    <p class="simple-note">{{ t.pipeline.note }}</p>
   </div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
 <div class="page" data-screen-label="Team">
-  <p class="eyebrow">Team</p>
-  <h1 class="h1">Built by people who have taken drugs to market</h1>
-  <p class="lede">Leadership spanning pharmaceutical operations, regulatory affairs, and investment, backed by an execution team with deep CMC, toxicology, and medicinal chemistry experience.</p>
+  <p class="eyebrow">{{ t.team.eyebrow }}</p>
+  <h1 class="h1">{{ t.team.h1 }}</h1>
+  <p class="lede">{{ t.team.lede }}</p>
 
   <div class="grid-3 section">
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/guodong_yang.jpg" alt="Guodong Yang"></div>
-      <p class="team-name">Guodong Yang</p><p class="team-title">General Manager</p>
+      <p class="team-name">Guodong Yang</p><p class="team-title">{{ t.team.titleGuodong }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/ningning_xie.jpg" alt="Ningning Xie"></div>
-      <p class="team-name">Ningning Xie</p><p class="team-title">Executive Director &amp; Deputy General Manager</p>
+      <p class="team-name">Ningning Xie</p><p class="team-title">{{ t.team.titleNingning }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/songlin_xu.jpg" alt="Dr. Songlin Xu"></div>
-      <p class="team-name">Dr. Songlin Xu</p><p class="team-title">Principal Scientist</p>
+      <p class="team-name">Dr. Songlin Xu</p><p class="team-title">{{ t.team.titleSonglin }}</p>
     </div>
   </div>
 
   <div class="grid-3 section">
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/kang_ye.jpg" alt="Kan Ye"></div>
-      <p class="team-name">Kan Ye</p><p class="team-title">Director of Investment and Financing</p>
+      <p class="team-name">Kan Ye</p><p class="team-title">{{ t.team.titleKan }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/quan_wang.jpg" alt="Quan Wang"></div>
-      <p class="team-name">Quan Wang</p><p class="team-title">Director of CMC</p>
+      <p class="team-name">Quan Wang</p><p class="team-title">{{ t.team.titleQuan }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/jun_zhou.jpg" alt="Jun Zhou"></div>
-      <p class="team-name">Jun Zhou</p><p class="team-title">Director of Pharmacology and Toxicology</p>
+      <p class="team-name">Jun Zhou</p><p class="team-title">{{ t.team.titleJun }}</p>
     </div>
   </div>
 
   <div class="grid-3 advisors section">
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/jianbei_xi.jpg" alt="Dr. Jianbei Xi"></div>
-      <p class="team-name">Dr. Jianbei Xi</p><p class="team-title">Senior Director of Pharmaceutical Chemistry</p>
+      <p class="team-name">Dr. Jianbei Xi</p><p class="team-title">{{ t.team.titleJianbei }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/huiliang_zhang.jpg" alt="Dr. Huiliang Zhang"></div>
-      <p class="team-name">Dr. Huiliang Zhang</p><p class="team-title">Advisor — Pharmacology &amp; Target Discovery</p>
+      <p class="team-name">Dr. Huiliang Zhang</p><p class="team-title">{{ t.team.titleHuiliang }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/changqing_wei.jpg" alt="Dr. Changqing Wei"></div>
-      <p class="team-name">Dr. Changqing Wei</p><p class="team-title">Advisor — Medicinal Chemistry</p>
+      <p class="team-name">Dr. Changqing Wei</p><p class="team-title">{{ t.team.titleChangqing }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
       <div class="team-photo"><img src="uploads/qiong_luo.jpg" alt="Dr. Qiong Luo"></div>
-      <p class="team-name">Dr. Qiong Luo</p><p class="team-title">Advisor — Preclinical Efficacy &amp; Target Validation</p>
+      <p class="team-name">Dr. Qiong Luo</p><p class="team-title">{{ t.team.titleQiong }}</p>
     </div>
   </div>
-  <p class="simple-note">Full team biographies and credentials available on request.</p>
+  <p class="simple-note">{{ t.team.note }}</p>
 </div>
 </sc-if>
 
 <sc-if value="{{ isPartner }}" hint-placeholder-val="{{ false }}">
 <div class="page" data-screen-label="Partner">
-  <p class="eyebrow">Partnership</p>
-  <h1 class="h1">Let's talk about QRK-005/007</h1>
-  <p class="lede">We're seeking a partner to help take QRK-005/007 from pre-IND to the clinic. Serious inquiries receive our complete BD deck and data package under a mutual CDA.</p>
+  <p class="eyebrow">{{ t.partner.eyebrow }}</p>
+  <h1 class="h1">{{ t.partner.h1 }}</h1>
+  <p class="lede">{{ t.partner.lede }}</p>
 
   <div class="ask-row">
-    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>License-out</h3><p>Regional or global rights, with milestone and royalty structure.</p></div>
-    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>Co-development</h3><p>Shared IND-enabling and clinical development, joint data ownership.</p></div>
-    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>Equity investment</h3><p>Capital partnership tied to program advancement toward IND.</p></div>
+    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>{{ t.partner.ask1H3 }}</h3><p>{{ t.partner.ask1P }}</p></div>
+    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>{{ t.partner.ask2H3 }}</h3><p>{{ t.partner.ask2P }}</p></div>
+    <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>{{ t.partner.ask3H3 }}</h3><p>{{ t.partner.ask3P }}</p></div>
   </div>
 
   <div class="contact-card">
-    <h3>Li-Pin Juan</h3>
-    <p>BD Consultant</p>
-    <p><a href="mailto:lipin.juan@drugbridge.com">lipin.juan@drugbridge.com</a></p>
+    <h3>{{ t.partner.contactName }}</h3>
+    <p>{{ t.partner.contactTitle }}</p>
+    <p><a href="{{ t.partner.contactMailto }}">{{ t.partner.contactEmail }}</a></p>
   </div>
 </div>
 </sc-if>
 
 <footer class="site-footer">
-  <span>DrugBridge — QRK-005/007 STAT6 Degrader Program</span>
-  <span>Site content reflects information available as of August 2026 — contact us for the latest update.</span>
+  <span>{{ t.footer1 }}</span>
+  <span>{{ t.footer2 }}</span>
 </footer>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const T = {
+  en: {
+    nav: { home: 'Home', science: 'Science', pipeline: 'Pipeline', team: 'Team', partner: 'Partner' },
+    footer1: 'DrugBridge — QRK-005/007 STAT6 Degrader Program',
+    footer2: 'Site content reflects information available as of August 2026 — contact us for the latest update.',
+    home: {
+      eyebrow: 'Oral STAT6 Degrader Platform',
+      h1: `A pill for atopic dermatitis, engineered to match what today's injectables can do.`,
+      lede: `QRK-005 and QRK-007 are DrugBridge's oral small-molecule STAT6 degraders — built to bring biologic-level efficacy to a once-daily pill, in a validated and increasingly sought-after drug class.`,
+      btnPartner: 'Partnership inquiries',
+      btnScience: 'How it works',
+      stat1Num: 'Oral', stat1Lbl: 'Once-daily pill, not an injection',
+      stat2Num: '2 candidates', stat2Lbl: 'Complementary preclinical profiles, one program',
+      stat3Num: 'Pre-IND', stat3Lbl: 'IND submission targeted 2027, entering a validated field',
+      whyNowH2: 'Why now',
+      whyNowP1: `Atopic dermatitis is driven by a well-understood inflammatory signal — one that current biologic and oral therapies each address with real trade-offs, between delivery burden and broader safety exposure. QRK-005/007 are designed to intervene precisely at that signal's convergence point, as a pill.`,
+      whyNowP2: `This is not an unproven idea: the broader field of oral STAT6-targeted therapies has drawn major pharma investment and encouraging early clinical signals over the past two years. DrugBridge is entering a category the market has already validated, with a differentiated pair of candidates and a clear path to IND.`,
+      ctaH2: 'Want the full data package?',
+      ctaP: `Our complete preclinical dataset — efficacy, pharmacokinetics, and safety — is available to partners under a mutual CDA.`,
+      ctaBtn: 'Get in touch',
+    },
+    science: {
+      eyebrow: 'The Science',
+      h1: 'One target, engineered for precision',
+      lede: `Two signaling proteins, IL-4 and IL-13, drive the inflammation behind atopic dermatitis. Both converge on a single downstream switch: STAT6. QRK-005 and QRK-007 are designed to shut that switch off directly.`,
+      pillar1H3: 'Targeted at the source',
+      pillar1P: `By acting on STAT6 itself, one molecule addresses what upstream biologic and kinase-inhibitor approaches currently split between two different drug classes.`,
+      pillar2H3: 'Built for selectivity',
+      pillar2P: `Both candidates are engineered to act on STAT6 with high specificity, sparing related signaling proteins — the design principle behind a cleaner safety profile than broad-spectrum alternatives.`,
+      pillar3H3: 'Oral by design',
+      pillar3P: `A small molecule taken as a pill, aimed at delivering biologic-level efficacy without an injection.`,
+      validatedH2: 'A validated approach',
+      validatedP: `Oral STAT6-targeted therapy is an active, closely watched category: multiple programs are in clinical and preclinical development, several already backed by major pharmaceutical partnerships. Public clinical signals from the most advanced program in the class — degradation of the target protein alongside meaningful improvement in disease severity — support the underlying biology DrugBridge's candidates are built on.`,
+      note: `Full preclinical data — potency, pharmacokinetics, tissue distribution, and safety pharmacology — is shared with partners under a mutual CDA.`,
+    },
+    pipeline: {
+      eyebrow: 'Pipeline & Landscape',
+      h1: 'A crowded field, an open lead',
+      lede: `Approved biologics and oral therapies for atopic dermatitis each leave something on the table — delivery convenience, or breadth of safety exposure. A wave of oral STAT6 programs, DrugBridge's included, is racing to close that gap.`,
+      compare1Name: 'Injectable biologics',
+      compare1Desc: `Established efficacy and safety, but require regular injection — a real burden for chronic daily use.`,
+      compare2Name: 'Oral JAK inhibitors',
+      compare2Desc: `Fast-acting and convenient, but broad-spectrum action carries a boxed safety warning.`,
+      compare3Name: 'Oral STAT6 degraders',
+      compare3Desc: `The category DrugBridge is building in — designed for injectable-level efficacy with the convenience and, potentially, the safety profile of a targeted pill.`,
+      bettingH2: 'A field pharma is already betting on',
+      bettingP: `Six competing oral STAT6 programs are in development worldwide. Four are already partnered with large pharmaceutical companies — most secured before any Phase 2 data existed, proof the category has real buyer demand. The most clinically advanced program remains independently owned by its developer, and has reported encouraging Phase 1 results while now enrolling Phase 2. DrugBridge's QRK-005/007 are unpartnered and pre-IND, competing on data quality and deal economics in a category the market has already validated.`,
+      note: `A full breakdown of competing programs, deal terms, and public clinical data is available on request. Competitive landscape reflects publicly available information as of August 2026.`,
+    },
+    team: {
+      eyebrow: 'Team',
+      h1: 'Built by people who have taken drugs to market',
+      lede: `Leadership spanning pharmaceutical operations, regulatory affairs, and investment, backed by an execution team with deep CMC, toxicology, and medicinal chemistry experience.`,
+      titleGuodong: 'General Manager',
+      titleNingning: 'Executive Director & Deputy General Manager',
+      titleSonglin: 'Principal Scientist',
+      titleKan: 'Director of Investment and Financing',
+      titleQuan: 'Director of CMC',
+      titleJun: 'Director of Pharmacology and Toxicology',
+      titleJianbei: 'Senior Director of Pharmaceutical Chemistry',
+      titleHuiliang: 'Advisor — Pharmacology & Target Discovery',
+      titleChangqing: 'Advisor — Medicinal Chemistry',
+      titleQiong: 'Advisor — Preclinical Efficacy & Target Validation',
+      note: 'Full team biographies and credentials available on request.',
+    },
+    partner: {
+      eyebrow: 'Partnership',
+      h1: `Let's talk about QRK-005/007`,
+      lede: `We're seeking a partner to help take QRK-005/007 from pre-IND to the clinic. Serious inquiries receive our complete BD deck and data package under a mutual CDA.`,
+      ask1H3: 'License-out', ask1P: 'Regional or global rights, with milestone and royalty structure.',
+      ask2H3: 'Co-development', ask2P: 'Shared IND-enabling and clinical development, joint data ownership.',
+      ask3H3: 'Equity investment', ask3P: 'Capital partnership tied to program advancement toward IND.',
+      contactName: 'Li-Pin Juan',
+      contactTitle: 'BD Consultant',
+      contactEmail: 'lipin.juan@drugbridge.com',
+      contactMailto: 'mailto:lipin.juan@drugbridge.com',
+    },
+  },
+  zh: {
+    nav: { home: '首頁', science: '科學', pipeline: '管線', team: '團隊', partner: '合作' },
+    footer1: 'DrugBridge — QRK-005/007 STAT6 降解劑計畫',
+    footer2: '網站內容反映截至 2026 年 8 月的公開資訊 — 如需最新資訊,請與我們聯繫。',
+    home: {
+      eyebrow: '口服 STAT6 降解劑平台',
+      h1: '一顆藥丸,對抗異位性皮膚炎,療效媲美現行生物製劑。',
+      lede: 'QRK-005 與 QRK-007 是 DrugBridge 開發的口服小分子 STAT6 降解劑,目標是將生物製劑等級的療效濃縮進一天一次的藥丸中,躋身一個已獲市場驗證且日益受矚目的藥物類別。',
+      btnPartner: '洽談合作',
+      btnScience: '了解原理',
+      stat1Num: '口服', stat1Lbl: '一天一次藥丸,無需注射',
+      stat2Num: '2 個候選藥物', stat2Lbl: '互補的臨床前特性,同一計畫',
+      stat3Num: '臨床前(Pre-IND)', stat3Lbl: '目標於 2027 年遞交 IND 申請,進入已獲驗證的領域',
+      whyNowH2: '為何是現在',
+      whyNowP1: '異位性皮膚炎的致病機轉已有清楚的科學基礎 — 現行生物製劑與口服療法各自面臨真實的取捨:給藥方式的負擔,或更廣泛的安全性風險。QRK-005/007 的設計,正是要精準介入這個訊號匯聚點,並以藥丸形式給藥。',
+      whyNowP2: '這並非未經驗證的概念:口服 STAT6 標靶療法這個領域,近兩年已吸引主要大型藥廠投資,並展現出令人振奮的早期臨床訊號。DrugBridge 正進入一個市場已經驗證的類別,擁有差異化的候選藥物組合,以及清晰的 IND 遞交路徑。',
+      ctaH2: '想要完整數據資料包?',
+      ctaP: '我們完整的臨床前數據集 — 療效、藥物動力學與安全性 — 將於簽署雙方保密協議(CDA)後提供給合作夥伴。',
+      ctaBtn: '與我們聯繫',
+    },
+    science: {
+      eyebrow: '科學原理',
+      h1: '單一標靶,精準設計',
+      lede: 'IL-4 與 IL-13 這兩個訊號蛋白,是異位性皮膚炎發炎反應的驅動因子,兩者最終匯聚於同一個下游開關:STAT6。QRK-005 與 QRK-007 的設計目標,就是直接關閉這個開關。',
+      pillar1H3: '直擊源頭',
+      pillar1P: '直接作用於 STAT6 本身,一個分子即可涵蓋目前生物製劑與激酶抑制劑兩種不同藥物類別各自處理的上游路徑。',
+      pillar2H3: '為選擇性而生',
+      pillar2P: '兩個候選藥物皆設計為高度專一地作用於 STAT6,不影響相關訊號蛋白 — 這正是相較於廣譜藥物具備更乾淨安全性特徵的設計原則。',
+      pillar3H3: '從設計之初就是口服',
+      pillar3P: '一顆口服小分子藥丸,目標是在無需注射的情況下,提供生物製劑等級的療效。',
+      validatedH2: '已獲驗證的方法',
+      validatedP: '口服 STAT6 標靶療法是一個活躍且備受關注的類別:多項計畫正處於臨床與臨床前開發階段,其中數項已獲大型藥廠合作背書。該類別中進度最領先的計畫所公開的臨床訊號 — 標靶蛋白降解,以及病情嚴重度的顯著改善 — 支持了 DrugBridge 候選藥物所依據的核心生物學基礎。',
+      note: '完整的臨床前數據 — 效力、藥物動力學、組織分布與安全藥理學 — 將於簽署雙方保密協議(CDA)後與合作夥伴分享。',
+    },
+    pipeline: {
+      eyebrow: '管線與競爭格局',
+      h1: '擁擠的賽道,仍有機會領先',
+      lede: '目前已核准的生物製劑與口服療法在異位性皮膚炎治療上,各自都有所取捨 — 給藥便利性,或更廣泛的安全性。包括 DrugBridge 在內,一波口服 STAT6 計畫正競相填補這個缺口。',
+      compare1Name: '注射型生物製劑',
+      compare1Desc: '療效與安全性皆已確立,但需定期注射 — 對長期慢性治療是真實的負擔。',
+      compare2Name: '口服 JAK 抑制劑',
+      compare2Desc: '起效快、使用方便,但廣譜作用機轉伴隨黑框警語(boxed warning)。',
+      compare3Name: '口服 STAT6 降解劑',
+      compare3Desc: 'DrugBridge 正在建立的類別 — 目標是以標靶藥丸的便利性,達到注射型藥物等級的療效,並可能具備更佳的安全性。',
+      bettingH2: '大型藥廠已經在下注的領域',
+      bettingP: '全球目前有六項相互競爭的口服 STAT6 計畫正在開發中。其中四項已與大型藥廠達成合作 — 多數在任何第二期(Phase 2)數據出現之前就已簽署,證明此類別具備真實的買方需求。臨床進度最領先的計畫目前仍由其開發商獨立持有,已公布令人振奮的第一期(Phase 1)結果,現正進入第二期。DrugBridge 的 QRK-005/007 尚未授權且處於臨床前(Pre-IND)階段,將在一個市場已驗證的類別中,以數據品質與交易條件參與競爭。',
+      note: '完整的競爭計畫、交易條件與公開臨床數據分析,可應要求提供。競爭格局反映截至 2026 年 8 月的公開資訊。',
+    },
+    team: {
+      eyebrow: '團隊',
+      h1: '由曾將藥物成功推向市場的團隊打造',
+      lede: '領導團隊橫跨藥廠營運、法規事務與投資領域,並由具備深厚 CMC、毒理學與藥物化學經驗的執行團隊支持。',
+      titleGuodong: '總經理',
+      titleNingning: '執行董事 兼 副總經理',
+      titleSonglin: '首席科學家',
+      titleKan: '投資與融資總監',
+      titleQuan: 'CMC(化學製造管控)總監',
+      titleJun: '藥理毒理學總監',
+      titleJianbei: '藥物化學資深總監',
+      titleHuiliang: '顧問 — 藥理學與標靶發現',
+      titleChangqing: '顧問 — 藥物化學',
+      titleQiong: '顧問 — 臨床前藥效與標靶驗證',
+      note: '完整團隊簡歷與資歷可應要求提供。',
+    },
+    partner: {
+      eyebrow: '合作洽談',
+      h1: '一起聊聊 QRK-005/007',
+      lede: '我們正在尋找合作夥伴,協助將 QRK-005/007 從臨床前推進至臨床試驗階段。經正式評估的洽詢,將於簽署雙方保密協議(CDA)後,取得完整的 BD 簡報與數據資料包。',
+      ask1H3: '授權外授(License-out)', ask1P: '區域或全球權利授權,採里程碑金與權利金架構。',
+      ask2H3: '共同開發', ask2P: '共同進行 IND 前準備與臨床開發,共享數據所有權。',
+      ask3H3: '股權投資', ask3P: '資本合作,與計畫推進至 IND 階段掛鉤。',
+      contactName: 'Fred Yang',
+      contactTitle: '業務開發顧問',
+      contactEmail: 'chyang@drugbridge.com',
+      contactMailto: 'mailto:chyang@drugbridge.com',
+    },
+  },
+};
+
 class Component extends DCLogic {
-  state = { page: 'home' };
+  state = { page: 'home', lang: 'en' };
   go(page) { this.setState({ page }); }
+  toggleLang() { this.setState({ lang: this.state.lang === 'en' ? 'zh' : 'en' }); }
   renderVals() {
     const p = this.state.page;
+    const lang = this.state.lang;
+    const t = T[lang];
     const items = [
-      { id: 'home', label: 'Home' },
-      { id: 'science', label: 'Science' },
-      { id: 'pipeline', label: 'Pipeline' },
-      { id: 'team', label: 'Team' },
-      { id: 'partner', label: 'Partner' },
+      { id: 'home', label: t.nav.home },
+      { id: 'science', label: t.nav.science },
+      { id: 'pipeline', label: t.nav.pipeline },
+      { id: 'team', label: t.nav.team },
+      { id: 'partner', label: t.nav.partner },
     ];
     const navItems = items.map(it => ({
       label: it.label,
@@ -267,7 +430,9 @@ class Component extends DCLogic {
       go: () => this.go(it.id),
     }));
     return {
+      t,
       navItems,
+      langToggleLabel: lang === 'en' ? '中文' : 'EN',
       isHome: p === 'home',
       isScience: p === 'science',
       isPipeline: p === 'pipeline',
@@ -276,6 +441,7 @@ class Component extends DCLogic {
       goHome: () => this.go('home'),
       goScience: () => this.go('science'),
       goPartner: () => this.go('partner'),
+      toggleLang: () => this.toggleLang(),
     };
   }
 }
