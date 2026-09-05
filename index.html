@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DrugBridge — Oral STAT6 Degraders for Atopic Dermatitis</title>
-<meta name="description" content="DrugBridge is advancing QRK-005 and QRK-007, oral small-molecule STAT6 degraders for atopic dermatitis. Pre-IND, seeking a partner for license-out, co-development, or equity investment.">
-<meta property="og:title" content="DrugBridge — Oral STAT6 Degraders for Atopic Dermatitis">
-<meta property="og:description" content="A once-daily pill engineered to match what today's injectable biologics can do. QRK-005/007, pre-IND, IND targeted 2027.">
+<title>DrugBridge — Oral STAT6 Degraders for Atopic Dermatitis and Th2 Inflammatory Disease</title>
+<meta name="description" content="DrugBridge is advancing QRK-007 and QRK-005, oral small-molecule STAT6 degraders for moderate-to-severe atopic dermatitis, with natural extension to eosinophilic asthma and COPD. Lead candidate QRK-007 is in IND-enabling studies. Seeking a partner for license-out, co-development, or equity investment.">
+<meta property="og:title" content="DrugBridge — Oral STAT6 Degraders for Atopic Dermatitis and Th2 Inflammatory Disease">
+<meta property="og:description" content="An oral upgrade to today's injectable biologics. Lead candidate QRK-007 in IND-enabling studies; IND targeted 2027.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://drugbridge.bio/">
 <meta name="twitter:card" content="summary">
@@ -54,11 +54,13 @@
     .compare-desc { font-size: 15px; line-height: 1.5; color: color-mix(in srgb, var(--color-text) 68%, transparent); }
     .simple-note { font-size: 14px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-top: 28px; max-width: 680px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-.grid-3.advisors { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .team-photo { aspect-ratio: 1; width: 100%; }
     .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .team-photo.placeholder { display: flex; align-items: center; justify-content: center; background: var(--color-accent-100); color: var(--color-accent-700); font-family: var(--font-heading); font-weight: 700; font-size: 34px; }
     .team-name { font-family: var(--font-heading); font-weight: 700; font-size: 19px; margin: 16px 0 2px; }
     .team-title { font-size: 14px; font-weight: 700; color: var(--color-accent-700); margin: 0; }
+    .team-bio { font-size: 13.5px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin: 8px 0 0; }
+    .tier-label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 0 0 16px; }
     .track-list { display: flex; flex-direction: column; gap: 0; margin-top: 32px; border-top: 1px solid var(--color-divider); }
     .track-item { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--color-divider); }
     .track-date { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--color-accent-900); }
@@ -71,11 +73,18 @@
     .contact-card h3 { font-family: var(--font-heading); font-weight: 700; font-size: 22px; margin: 0 0 8px; }
     .contact-card p { font-size: 15px; margin: 0 0 4px; color: color-mix(in srgb, var(--color-bg) 88%, transparent); }
     .contact-card a { color: var(--color-bg); font-weight: 700; }
+    .jobs-row { align-items: start; }
+    .job-toggle { display: inline-block; margin-top: 14px; padding: 0; border: none; background: none; font-family: var(--font-body); font-size: 13.5px; font-weight: 700; color: var(--color-accent-700); text-decoration: underline; cursor: pointer; }
+    .job-toggle:hover { color: var(--color-accent-900); }
+    .job-detail { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 13.5px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 70%, transparent); }
+    .job-detail h4 { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-900); margin: 14px 0 6px; }
+    .job-detail ul { margin: 0; padding-left: 18px; }
+    .job-detail li { margin: 0 0 5px; }
     .cta-band { margin-top: 96px; padding: 56px; background: var(--color-neutral-200); border: 1px solid var(--color-divider); text-align: center; }
     .cta-band p { color: color-mix(in srgb, var(--color-text) 70%, transparent); font-size: 16px; margin: 0 0 24px; max-width: 560px; margin-left: auto; margin-right: auto; }
     .site-footer { border-top: 1px solid var(--color-divider); padding: 32px 56px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 50%, transparent); display: flex; justify-content: space-between; gap: 24px; }
     @media (max-width: 860px) {
-      .stat-row, .pillar-row, .grid-3, .grid-3.advisors, .ask-row { grid-template-columns: 1fr; }
+      .stat-row, .pillar-row, .grid-3, .ask-row { grid-template-columns: 1fr; }
       .site-footer { flex-direction: column; }
     }
     @media (max-width: 640px) {
@@ -135,6 +144,7 @@
     <h2 class="h2">{{ t.home.whyNowH2 }}</h2>
     <p class="prose">{{ t.home.whyNowP1 }}</p>
     <p class="prose">{{ t.home.whyNowP2 }}</p>
+    <p class="simple-note">{{ t.home.aboutNote }}</p>
   </div>
 
   <div class="cta-band">
@@ -169,6 +179,26 @@
   <div class="section">
     <h2 class="h2">{{ t.science.validatedH2 }}</h2>
     <p class="prose">{{ t.science.validatedP }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.science.mechanismH2 }}</h2>
+    <p class="prose">{{ t.science.mechanismP }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.science.candidatesH2 }}</h2>
+    <p class="prose">{{ t.science.candidatesP }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.science.marketH2 }}</h2>
+    <p class="prose">{{ t.science.marketP }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.science.beyondH2 }}</h2>
+    <p class="prose">{{ t.science.beyondP }}</p>
     <p class="simple-note">{{ t.science.note }}</p>
   </div>
 </div>
@@ -180,7 +210,14 @@
   <h1 class="h1">{{ t.pipeline.h1 }}</h1>
   <p class="lede">{{ t.pipeline.lede }}</p>
 
-  <div class="compare-row">
+  <h2 class="h2" style="margin-top: 48px;">{{ t.pipeline.candidatesH2 }}</h2>
+  <div class="compare-row" style="margin-top: 0;">
+    <div class="compare-item hl"><div class="compare-name">{{ t.pipeline.cand1Name }}</div><div class="compare-desc">{{ t.pipeline.cand1Desc }}</div></div>
+    <div class="compare-item"><div class="compare-name">{{ t.pipeline.cand2Name }}</div><div class="compare-desc">{{ t.pipeline.cand2Desc }}</div></div>
+  </div>
+
+  <h2 class="h2" style="margin-top: 72px;">{{ t.pipeline.landscapeH2 }}</h2>
+  <div class="compare-row" style="margin-top: 0;">
     <div class="compare-item"><div class="compare-name">{{ t.pipeline.compare1Name }}</div><div class="compare-desc">{{ t.pipeline.compare1Desc }}</div></div>
     <div class="compare-item"><div class="compare-name">{{ t.pipeline.compare2Name }}</div><div class="compare-desc">{{ t.pipeline.compare2Desc }}</div></div>
     <div class="compare-item hl"><div class="compare-name">{{ t.pipeline.compare3Name }}</div><div class="compare-desc">{{ t.pipeline.compare3Desc }}</div></div>
@@ -189,6 +226,7 @@
   <div class="section">
     <h2 class="h2">{{ t.pipeline.bettingH2 }}</h2>
     <p class="prose">{{ t.pipeline.bettingP }}</p>
+    <p class="prose">{{ t.pipeline.ipP }}</p>
     <p class="simple-note">{{ t.pipeline.note }}</p>
   </div>
 </div>
@@ -200,52 +238,70 @@
   <h1 class="h1">{{ t.team.h1 }}</h1>
   <p class="lede">{{ t.team.lede }}</p>
 
-  <div class="grid-3 section">
+  <p class="tier-label section">{{ t.team.tierCore }}</p>
+  <div class="grid-3">
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/guodong_yang.jpg" alt="Guodong Yang"></div>
-      <p class="team-name">Guodong Yang</p><p class="team-title">{{ t.team.titleGuodong }}</p>
+      <div class="team-photo"><img src="uploads/guodong_yang.jpg" alt="{{ t.team.nameGuodong }}"></div>
+      <p class="team-name">{{ t.team.nameGuodong }}</p><p class="team-title">{{ t.team.titleGuodong }}</p>
+      <p class="team-bio">{{ t.team.bioGuodong }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/ningning_xie.jpg" alt="Ningning Xie"></div>
-      <p class="team-name">Ningning Xie</p><p class="team-title">{{ t.team.titleNingning }}</p>
+      <div class="team-photo"><img src="uploads/ningning_xie.jpg" alt="{{ t.team.nameNingning }}"></div>
+      <p class="team-name">{{ t.team.nameNingning }}</p><p class="team-title">{{ t.team.titleNingning }}</p>
+      <p class="team-bio">{{ t.team.bioNingning }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/songlin_xu.jpg" alt="Dr. Songlin Xu"></div>
-      <p class="team-name">Dr. Songlin Xu</p><p class="team-title">{{ t.team.titleSonglin }}</p>
-    </div>
-  </div>
-
-  <div class="grid-3 section">
-    <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/kang_ye.jpg" alt="Kan Ye"></div>
-      <p class="team-name">Kan Ye</p><p class="team-title">{{ t.team.titleKan }}</p>
+      <div class="team-photo"><img src="uploads/songlin_xu.jpg" alt="{{ t.team.nameSonglin }}"></div>
+      <p class="team-name">{{ t.team.nameSonglin }}</p><p class="team-title">{{ t.team.titleSonglin }}</p>
+      <p class="team-bio">{{ t.team.bioSonglin }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/quan_wang.jpg" alt="Quan Wang"></div>
-      <p class="team-name">Quan Wang</p><p class="team-title">{{ t.team.titleQuan }}</p>
-    </div>
-    <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/jun_zhou.jpg" alt="Jun Zhou"></div>
-      <p class="team-name">Jun Zhou</p><p class="team-title">{{ t.team.titleJun }}</p>
+      <div class="team-photo"><img src="uploads/huiliang_zhang.jpg" alt="{{ t.team.nameHuiliang }}"></div>
+      <p class="team-name">{{ t.team.nameHuiliang }}</p><p class="team-title">{{ t.team.titleHuiliang }}</p>
+      <p class="team-bio">{{ t.team.bioHuiliang }}</p>
     </div>
   </div>
 
-  <div class="grid-3 advisors section">
+  <p class="tier-label section">{{ t.team.tierExec }}</p>
+  <div class="grid-3">
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/jianbei_xi.jpg" alt="Dr. Jianbei Xi"></div>
-      <p class="team-name">Dr. Jianbei Xi</p><p class="team-title">{{ t.team.titleJianbei }}</p>
+      <div class="team-photo"><img src="uploads/kang_ye.jpg" alt="{{ t.team.nameKan }}"></div>
+      <p class="team-name">{{ t.team.nameKan }}</p><p class="team-title">{{ t.team.titleKan }}</p>
+      <p class="team-bio">{{ t.team.bioKan }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/huiliang_zhang.jpg" alt="Dr. Huiliang Zhang"></div>
-      <p class="team-name">Dr. Huiliang Zhang</p><p class="team-title">{{ t.team.titleHuiliang }}</p>
+      <div class="team-photo"><img src="uploads/quan_wang.jpg" alt="{{ t.team.nameQuan }}"></div>
+      <p class="team-name">{{ t.team.nameQuan }}</p><p class="team-title">{{ t.team.titleQuan }}</p>
+      <p class="team-bio">{{ t.team.bioQuan }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/changqing_wei.jpg" alt="Dr. Changqing Wei"></div>
-      <p class="team-name">Dr. Changqing Wei</p><p class="team-title">{{ t.team.titleChangqing }}</p>
+      <div class="team-photo"><img src="uploads/jun_zhou.jpg" alt="{{ t.team.nameJun }}"></div>
+      <p class="team-name">{{ t.team.nameJun }}</p><p class="team-title">{{ t.team.titleJun }}</p>
+      <p class="team-bio">{{ t.team.bioJun }}</p>
     </div>
     <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      <div class="team-photo"><img src="uploads/qiong_luo.jpg" alt="Dr. Qiong Luo"></div>
-      <p class="team-name">Dr. Qiong Luo</p><p class="team-title">{{ t.team.titleQiong }}</p>
+      <div class="team-photo"><img src="uploads/jianbei_xi.jpg" alt="{{ t.team.nameJianbei }}"></div>
+      <p class="team-name">{{ t.team.nameJianbei }}</p><p class="team-title">{{ t.team.titleJianbei }}</p>
+      <p class="team-bio">{{ t.team.bioJianbei }}</p>
+    </div>
+    <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="team-photo placeholder">FH</div>
+      <p class="team-name">{{ t.team.nameFangfang }}</p><p class="team-title">{{ t.team.titleFangfang }}</p>
+      <p class="team-bio">{{ t.team.bioFangfang }}</p>
+    </div>
+  </div>
+
+  <p class="tier-label section">{{ t.team.tierAdvisors }}</p>
+  <div class="grid-3">
+    <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="team-photo"><img src="uploads/changqing_wei.jpg" alt="{{ t.team.nameChangqing }}"></div>
+      <p class="team-name">{{ t.team.nameChangqing }}</p><p class="team-title">{{ t.team.titleChangqing }}</p>
+      <p class="team-bio">{{ t.team.bioChangqing }}</p>
+    </div>
+    <div class="blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="team-photo"><img src="uploads/qiong_luo.jpg" alt="{{ t.team.nameQiong }}"></div>
+      <p class="team-name">{{ t.team.nameQiong }}</p><p class="team-title">{{ t.team.titleQiong }}</p>
+      <p class="team-bio">{{ t.team.bioQiong }}</p>
     </div>
   </div>
   <p class="simple-note">{{ t.team.note }}</p>
@@ -257,6 +313,7 @@
   <p class="eyebrow">{{ t.partner.eyebrow }}</p>
   <h1 class="h1">{{ t.partner.h1 }}</h1>
   <p class="lede">{{ t.partner.lede }}</p>
+  <p class="prose">{{ t.partner.missionP }}</p>
 
   <div class="ask-row">
     <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>{{ t.partner.ask1H3 }}</h3><p>{{ t.partner.ask1P }}</p></div>
@@ -269,6 +326,52 @@
     <p>{{ t.partner.contactTitle }}</p>
     <p><a href="{{ t.partner.contactMailto }}">{{ t.partner.contactEmail }}</a></p>
     <p>{{ t.partner.address }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.partner.hiringH2 }}</h2>
+    <p class="prose">{{ t.partner.hiringP }}</p>
+    <div class="ask-row jobs-row">
+      <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h3>{{ t.partner.job1H3 }}</h3><p>{{ t.partner.job1P }}</p>
+        <button class="job-toggle" onClick="{{ toggleJob1 }}">{{ job1ToggleLabel }}</button>
+        <sc-if value="{{ isJob1Open }}" hint-placeholder-val="{{ false }}">
+          <div class="job-detail">
+            <p>{{ t.partner.job1Loc }}</p>
+            <h4>{{ t.partner.dutiesLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job1Duties }}" as="d" hint-placeholder-count="0"><li>{{ d }}</li></sc-for></ul>
+            <h4>{{ t.partner.reqsLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job1Reqs }}" as="r" hint-placeholder-count="0"><li>{{ r }}</li></sc-for></ul>
+          </div>
+        </sc-if>
+      </div>
+      <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h3>{{ t.partner.job2H3 }}</h3><p>{{ t.partner.job2P }}</p>
+        <button class="job-toggle" onClick="{{ toggleJob2 }}">{{ job2ToggleLabel }}</button>
+        <sc-if value="{{ isJob2Open }}" hint-placeholder-val="{{ false }}">
+          <div class="job-detail">
+            <p>{{ t.partner.job2Loc }}</p>
+            <h4>{{ t.partner.dutiesLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job2Duties }}" as="d" hint-placeholder-count="0"><li>{{ d }}</li></sc-for></ul>
+            <h4>{{ t.partner.reqsLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job2Reqs }}" as="r" hint-placeholder-count="0"><li>{{ r }}</li></sc-for></ul>
+          </div>
+        </sc-if>
+      </div>
+      <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h3>{{ t.partner.job3H3 }}</h3><p>{{ t.partner.job3P }}</p>
+        <button class="job-toggle" onClick="{{ toggleJob3 }}">{{ job3ToggleLabel }}</button>
+        <sc-if value="{{ isJob3Open }}" hint-placeholder-val="{{ false }}">
+          <div class="job-detail">
+            <h4>{{ t.partner.dutiesLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job3Duties }}" as="d" hint-placeholder-count="0"><li>{{ d }}</li></sc-for></ul>
+            <h4>{{ t.partner.reqsLabel }}</h4>
+            <ul><sc-for list="{{ t.partner.job3Reqs }}" as="r" hint-placeholder-count="0"><li>{{ r }}</li></sc-for></ul>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <p class="simple-note">{{ t.partner.hiringNote }} <a href="mailto:hufangfang@drugbridge.com">hufangfang@drugbridge.com</a></p>
   </div>
 </div>
 </sc-if>
@@ -283,20 +386,21 @@
 const T = {
   en: {
     nav: { home: 'Home', science: 'Science', pipeline: 'Pipeline', team: 'Team', partner: 'Partner' },
-    footer1: 'DrugBridge — QRK-005/007 STAT6 Degrader Program',
+    footer1: 'DrugBridge — QRK-007 / QRK-005 Oral STAT6 Degrader Program',
     footer2: 'Site content reflects information available as of August 2026 — contact us for the latest update.',
     home: {
       eyebrow: 'Oral STAT6 Degrader Platform',
       h1: `A pill for atopic dermatitis, engineered to match what today's injectables can do.`,
-      lede: `QRK-005 and QRK-007 are DrugBridge's oral small-molecule STAT6 degraders — built to bring biologic-level efficacy to a once-daily pill, in a validated and increasingly sought-after drug class.`,
+      lede: `QRK-007 and QRK-005 are DrugBridge's oral small-molecule STAT6 degraders — built to bring biologic-level efficacy to a once-daily pill in moderate-to-severe atopic dermatitis first, with the same Th2-pathway biology extending naturally to eosinophilic asthma, COPD, and other type 2 inflammatory diseases.`,
       btnPartner: 'Partnership inquiries',
       btnScience: 'How it works',
-      stat1Num: 'Oral', stat1Lbl: 'Once-daily pill, not an injection',
-      stat2Num: '2 candidates', stat2Lbl: 'Complementary preclinical profiles, one program',
-      stat3Num: 'Pre-IND', stat3Lbl: 'IND submission targeted 2027, entering a validated field',
+      stat1Num: 'Oral', stat1Lbl: 'Once-daily pill, not an injection every two weeks',
+      stat2Num: 'IND-enabling', stat2Lbl: 'Lead candidate QRK-007 already in IND-enabling studies; IND submission targeted 2027',
+      stat3Num: '2 candidates', stat3Lbl: 'QRK-007 leads; QRK-005 brings a differentiated second profile — partnerable together or separately',
       whyNowH2: 'Why now',
-      whyNowP1: `Atopic dermatitis is driven by a well-understood inflammatory signal — one that current biologic and oral therapies each address with real trade-offs, between delivery burden and broader safety exposure. QRK-005/007 are designed to intervene precisely at that signal's convergence point, as a pill.`,
-      whyNowP2: `This is not an unproven idea: the broader field of oral STAT6-targeted therapies has drawn major pharma investment and encouraging early clinical signals over the past two years. DrugBridge is entering a category the market has already validated, with a differentiated pair of candidates and a clear path to IND.`,
+      whyNowP1: `Atopic dermatitis is driven by a well-understood inflammatory signal — one that current biologic and oral therapies each address with real trade-offs, between delivery burden and broader safety exposure. QRK-007 and QRK-005 are designed to intervene precisely at that signal's convergence point, as a pill. And because STAT6 is the shared switch of type 2 inflammation, the same mechanism reaches beyond the skin — into eosinophilic asthma, COPD, and the wider Th2 category.`,
+      whyNowP2: `This is not an unproven idea: the broader field of oral STAT6-targeted therapies has drawn major pharma investment and encouraging early clinical signals over the past two years. DrugBridge is entering a category the market has already validated — with a lead candidate already in IND-enabling studies, a differentiated second candidate behind it, and a clear path to IND.`,
+      aboutNote: `Founded in 2025 and headquartered in Shanghai, DrugBridge closed an approximately ¥10M RMB angel round the same year and was recognized as a designated science & technology SME.`,
       ctaH2: 'Want the full data package?',
       ctaP: `Our complete preclinical dataset — efficacy, pharmacokinetics, and safety — is available to partners under a mutual CDA.`,
       ctaBtn: 'Get in touch',
@@ -304,7 +408,7 @@ const T = {
     science: {
       eyebrow: 'The Science',
       h1: 'One target, engineered for precision',
-      lede: `Two signaling proteins, IL-4 and IL-13, drive the inflammation behind atopic dermatitis. Both converge on a single downstream switch: STAT6. QRK-005 and QRK-007 are designed to shut that switch off directly.`,
+      lede: `Two signaling proteins, IL-4 and IL-13, drive the inflammation behind atopic dermatitis — and behind the wider family of type 2 (Th2) inflammatory diseases, including eosinophilic asthma and COPD. Both converge on a single downstream switch: STAT6. QRK-007 and QRK-005 are designed to shut that switch off directly.`,
       pillar1H3: 'Targeted at the source',
       pillar1P: `By acting on STAT6 itself, one molecule addresses what upstream biologic and kinase-inhibitor approaches currently split between two different drug classes.`,
       pillar2H3: 'Built for selectivity',
@@ -313,140 +417,330 @@ const T = {
       pillar3P: `A small molecule taken as a pill, aimed at delivering biologic-level efficacy without an injection.`,
       validatedH2: 'A validated approach',
       validatedP: `Oral STAT6-targeted therapy is an active, closely watched category: multiple programs are in clinical and preclinical development, several already backed by major pharmaceutical partnerships. Public clinical signals from the most advanced program in the class — degradation of the target protein alongside meaningful improvement in disease severity — support the underlying biology DrugBridge's candidates are built on.`,
+      mechanismH2: 'How the mechanism works',
+      mechanismP: `STAT6 is the specific transcription factor of the IL-4/IL-13 pathway — the pathway Dupixent's success validated as central to Th2 inflammation — and is regarded as the "central node" of type 2 inflammatory disease. QRK-007 and QRK-005 recruit a CRBN E3 ubiquitin ligase to STAT6, forming a ternary complex that drives STAT6 polyubiquitination and clearance by the 26S proteasome. This catalytic, event-driven degradation removes STAT6 protein outright, achieving deep blockade of IL-4/IL-13 signaling while largely sparing adjacent pathways such as IL-2 and IFN. Against Dupixent, the core advantages are oral dosing (adherence) and small-molecule economics (affordability); against JAK inhibitors, the core advantage is safety — minimal interference with other signaling pathways.`,
+      candidatesH2: 'Two candidates, two differentiated profiles',
+      candidatesP: `QRK-007, the lead candidate, is a globally novel oral STAT6 degrader now in IND-enabling studies — in the first tier of domestic programs against this target — and is differentiated on permeability, solubility, and target-tissue distribution, with strong Best-in-Class potential. QRK-005 brings a complementary profile: versus Kymera's KT-621, the most clinically advanced program in the class, it is designed for higher potency at higher free fraction, lower human metabolic clearance, potential for weekly dosing, and faster onset of efficacy in AD mouse models.`,
+      marketH2: 'A large, underserved population',
+      marketP: `Atopic dermatitis is among the most common chronic disease groups of the 21st century. Frost & Sullivan projects roughly 20.9 million moderate-to-severe patients in China and 14.5 million in the US by 2025; across the G7, an estimated 32 million patients had moderate-to-severe disease in 2023, of which only about 4 million had access to biologic systemic therapy. Adherence burden (Dupixent requires injection every two weeks), cost, and long-term safety concerns (JAK inhibitors) keep systemic-treatment penetration low, leaving millions of eligible patients without an advanced therapy. The market remains dominated by Dupixent — roughly US$12.5 billion in global AD sales in 2025, US$9.2 billion of it in the US — and an oral STAT6 degrader has the potential to reshape how the disease is treated.`,
+      beyondH2: 'Beyond atopic dermatitis',
+      beyondP: `Because STAT6 is the shared transcriptional switch of type 2 inflammation, Dupixent's label already spans dermatology and respiratory disease. The same biology gives QRK-007 and QRK-005 a natural runway from moderate-to-severe atopic dermatitis into moderate-to-severe eosinophilic asthma, COPD, and other Th2-driven conditions — a global Th2 market exceeding US$50 billion, benchmarked against a franchise with more than US$18 billion in annual sales. Atopic dermatitis is the lead indication; the wider category is the opportunity the program and the team are built to pursue.`,
       note: `Full preclinical data — potency, pharmacokinetics, tissue distribution, and safety pharmacology — is shared with partners under a mutual CDA.`,
     },
     pipeline: {
       eyebrow: 'Pipeline & Landscape',
       h1: 'A crowded field, an open lead',
-      lede: `Approved biologics and oral therapies for atopic dermatitis each leave something on the table — delivery convenience, or breadth of safety exposure. A wave of oral STAT6 programs, DrugBridge's included, is racing to close that gap.`,
+      lede: `Approved biologics and oral therapies for atopic dermatitis each leave something on the table — delivery convenience, or breadth of safety exposure. A wave of oral STAT6 programs, DrugBridge's included, is racing to close that gap: first in atopic dermatitis, then across the wider Th2 category.`,
+      candidatesH2: 'Our candidates',
+      cand1Name: 'QRK-007 — Lead candidate',
+      cand1Desc: `A globally novel oral small-molecule STAT6 degrader, now in IND-enabling studies and in the first tier of domestic programs against this target. Differentiated on permeability, solubility, and target-tissue distribution, with strong Best-in-Class potential. Positioned as an oral upgrade to Dupixent: the same deep pathway blockade, with oral convenience and lower cost.`,
+      cand2Name: 'QRK-005 — Second candidate',
+      cand2Desc: `A complementary molecule with its own differentiated profile: higher potency at higher free fraction, lower human metabolic clearance, potential for weekly dosing, and fast onset of efficacy in AD mouse models — advantages versus Kymera's KT-621, the most clinically advanced program in the class. Available for partnering on its own or together with QRK-007.`,
+      landscapeH2: 'The treatment landscape',
       compare1Name: 'Injectable biologics',
-      compare1Desc: `Established efficacy and safety, but require regular injection — a real burden for chronic daily use.`,
+      compare1Desc: `Established efficacy and safety — Dupixent alone exceeds US$18 billion in annual sales — but require injection every two weeks, a real burden and cost for chronic use.`,
       compare2Name: 'Oral JAK inhibitors',
-      compare2Desc: `Fast-acting and convenient, but broad-spectrum action carries a boxed safety warning.`,
+      compare2Desc: `Fast-acting and convenient, but broad-spectrum action carries an FDA boxed warning: infection, malignancy, major adverse cardiovascular events, and thrombosis.`,
       compare3Name: 'Oral STAT6 degraders',
-      compare3Desc: `The category DrugBridge is building in — designed for injectable-level efficacy with the convenience and, potentially, the safety profile of a targeted pill.`,
+      compare3Desc: `The category DrugBridge is building in — an oral upgrade to the injectable standard, designed for injectable-level efficacy with the convenience, affordability, and, potentially, the safety profile of a targeted pill.`,
       bettingH2: 'A field pharma is already betting on',
-      bettingP: `Six competing oral STAT6 programs are in development worldwide. Four are already partnered with large pharmaceutical companies — most secured before any Phase 2 data existed, proof the category has real buyer demand. The most clinically advanced program remains independently owned by its developer, and has reported encouraging Phase 1 results while now enrolling Phase 2. DrugBridge's QRK-005/007 are unpartnered and pre-IND, competing on data quality and deal economics in a category the market has already validated.`,
+      bettingP: `Six competing oral STAT6 programs are in development worldwide. Four are already partnered with large pharmaceutical companies — most secured before any Phase 2 data existed, proof the category has real buyer demand. The most clinically advanced program remains independently owned by its developer, and has reported encouraging Phase 1 results while now enrolling Phase 2. DrugBridge's QRK-007 and QRK-005 are unpartnered — QRK-007 in IND-enabling studies, QRK-005 behind it — competing on data quality and deal economics in a category the market has already validated.`,
+      ipP: `DrugBridge holds full, independent IP on the program: PCT patent applications covering the core molecule and its derivatives have been filed on a rolling basis since September 2025, and the international search report has already confirmed novelty and inventive step — a strong early signal for global patentability.`,
       note: `A full breakdown of competing programs, deal terms, and public clinical data is available on request. Competitive landscape reflects publicly available information as of August 2026.`,
     },
     team: {
       eyebrow: 'Team',
       h1: 'Built by people who have taken drugs to market',
-      lede: `Leadership spanning pharmaceutical operations, regulatory affairs, and investment, backed by an execution team with deep CMC, toxicology, and medicinal chemistry experience.`,
-      titleGuodong: 'General Manager',
-      titleNingning: 'Executive Director & Deputy General Manager',
-      titleSonglin: 'Principal Scientist',
+      lede: `Leadership spanning pharmaceutical operations, regulatory affairs, and investment, backed by an execution team with deep CMC, toxicology, and medicinal chemistry experience — full-chain capability from target nomination to IND filing, and the bench strength to extend the STAT6 program from atopic dermatitis across the wider Th2 category.`,
+      tierCore: 'Co-Founders & Core Management',
+      tierExec: 'Core Execution Team',
+      tierAdvisors: 'Scientific Advisors',
+      nameGuodong: 'Guodong Yang',
+      titleGuodong: 'Co-Founder & General Manager',
+      bioGuodong: `Licensed pharmacist with an M.S. in Pharmaceutics from China Pharmaceutical University. 35+ years in biopharma industry and regulatory affairs, including a long tenure as Deputy General Manager of listed pharma company Onlyca Pharmaceutical, and a former post as Deputy Director of the Zhejiang Drug Certification Center.`,
+      nameNingning: 'Ningning Xie',
+      titleNingning: 'Co-Founder, Executive Director & Deputy General Manager',
+      bioNingning: `M.S. in Economics from the Shanghai Academy of Social Sciences; ACCA-qualified. 20 years of biopharma research, investment, and operating experience — including senior roles at Haitong Securities, Donghai Securities Asset Management, and Greatsurge Asset — with multiple early-stage biotech investments and a former CFO post (and angel investment) at pre-IPO biotech Maijie Bio.`,
+      nameSonglin: 'Dr. Songlin Xu',
+      titleSonglin: 'Co-Founder & Director of R&D',
+      bioSonglin: `Co-founder of Zhejiang Haichang Bio. Ph.D. in Pharmaceutics from Shanghai Jiao Tong University, with postdoctoral training at Ohio State University. Specializes in non-viral gene delivery and complex drug formulation, and has led full R&D-to-registration cycles on multiple new drug programs.`,
+      nameHuiliang: 'Dr. Huiliang Zhang',
+      titleHuiliang: 'Chief Scientist',
+      bioHuiliang: `Tenure-track Assistant Professor and Ph.D. advisor, Dept. of Medical Genetics and Molecular Biochemistry, Temple University; Ph.D. in Biology from Peking University. Researches cardiovascular disease and aging mechanisms; first to propose mitochondrial proton leak as an aging-therapy target. Holds an NIH R35 grant, serves as editor for 5 international journals, and has authored 40+ publications.`,
+      nameKan: 'Kan Ye',
       titleKan: 'Director of Investment and Financing',
+      bioKan: `M.S. in Genetics from Fudan University. 15+ years of biopharma research and investment experience across sell-side and buy-side roles — formerly Chief Pharma Analyst at Xiangcai Securities, Research Director at Ruigu Investment, and Senior Researcher at Shagang Investment, with a national best-analyst award.`,
+      nameQuan: 'Quan Wang',
       titleQuan: 'Director of CMC',
+      bioQuan: `M.S. in Organic Chemistry from Wuhan University. 22 years in pharmaceutical and fine-chemical R&D, including 16+ years leading R&D teams. Deep expertise across the full small-molecule CMC cycle — PPQ manufacturing, on-site inspections, and CTD-format NDA filing — with strong process optimization and scale-up capability.`,
+      nameJun: 'Jun Zhou',
       titleJun: 'Director of Pharmacology and Toxicology',
+      bioJun: `M.S. in Veterinary Medicine from Shanghai Jiao Tong University. 20+ years of preclinical R&D across toxicology, DMPK, and in vivo pharmacology, having led or contributed to roughly 200 IND programs and multiple NDA approvals. Well versed in GLP and ICH/global regulatory requirements end-to-end.`,
+      nameJianbei: 'Dr. Jianbei Xi',
       titleJianbei: 'Senior Director of Pharmaceutical Chemistry',
-      titleHuiliang: 'Advisor — Pharmacology & Target Discovery',
-      titleChangqing: 'Advisor — Medicinal Chemistry',
-      titleQiong: 'Advisor — Preclinical Efficacy & Target Validation',
+      bioJianbei: `Ph.D. in Organic Chemistry from East China Normal University. 15+ years in small-molecule drug discovery across GSK, WuXi AppTec, Luye Pharma, and DualityBio. Has led multiple first-in-class oncology and autoimmune programs to 6 PCCs, including 2 with dual US/China IND clearance now in Phase II.`,
+      nameFangfang: 'Fangfang Hu',
+      titleFangfang: 'Deputy General Manager, Administration',
+      bioFangfang: `B.A. in Accounting from Ocean University of China; MBA from New York Institute of Technology. 17 years at Haier Group across accounting, HR, and marketing, with deep experience in engineering management and government/SOE relations, and strong local government and state-owned enterprise networks.`,
+      nameChangqing: 'Dr. Changqing Wei',
+      titleChangqing: 'Scientific Advisor',
+      bioChangqing: `Founder of Hefei Yike Pharmaceuticals; formerly Senior Director and Head of Innovative Drug R&D at Nianyan Pharma, and Director of New Drug R&D at WuXi AppTec. 20 years in drug discovery, 20+ international patents, 10+ publications, and 10+ domestic innovative drug programs taken through IND.`,
+      nameQiong: 'Dr. Qiong Luo',
+      titleQiong: 'Scientific Advisor',
+      bioQiong: `Tenure-track Assistant Professor / Distinguished Researcher and Ph.D. advisor, School of Life Sciences, Nanjing University. Research focus on anti-inflammatory and immunopharmacology, with multiple National Natural Science Foundation of China grants and ongoing pharma collaborations.`,
       note: 'Full team biographies and credentials available on request.',
     },
     partner: {
       eyebrow: 'Partnership',
-      h1: `Let's talk about QRK-005/007`,
-      lede: `We're seeking a partner to help take QRK-005/007 from pre-IND to the clinic. Serious inquiries receive our complete BD deck and data package under a mutual CDA.`,
-      ask1H3: 'License-out', ask1P: 'Regional or global rights, with milestone and royalty structure.',
+      h1: `Let's talk about QRK-007 and QRK-005`,
+      lede: `We're seeking a partner to help take QRK-007 — now in IND-enabling studies — and QRK-005 to the clinic. The two candidates can be partnered together or separately. Serious inquiries receive our complete BD deck and data package under a mutual CDA.`,
+      missionP: `DrugBridge is a differentiated new-drug platform pairing emerging modalities — including protein degradation and small nucleic acids — with unmet clinical need. Our mission is to combine that platform with novel-target biology and new pharmaceutical technologies — grounded in win-win academic and research partnerships — to deliver innovative medicines patients can access and afford, in China and globally. QRK-007 and QRK-005 are the first expression of that ambition: a Best-in-Class STAT6 program built to outperform international competitors and go global.`,
+      ask1H3: 'License-out', ask1P: 'Regional or global rights — per candidate or as a package — with milestone and royalty structure.',
       ask2H3: 'Co-development', ask2P: 'Shared IND-enabling and clinical development, joint data ownership.',
       ask3H3: 'Equity investment', ask3P: 'Capital partnership tied to program advancement toward IND.',
       contactName: 'Dr. Li-Pin Juan',
       contactTitle: 'BD Consultant',
       contactEmail: 'lipin.juan@drugbridge.com',
       contactMailto: 'mailto:lipin.juan@drugbridge.com',
-      address: 'Room 1109, Aili Building, No. 777 Taolin Road, Pudong District, Shanghai, China',
+      address: 'Room 1109, Lane 777 Taolin Road, Pudong New Area, Shanghai, China',
+      hiringH2: `We're hiring`,
+      hiringP: `Join the team advancing QRK-007 and QRK-005 toward the clinic. Open roles below — write to our HR contact for the full job description or to apply.`,
+      job1H3: 'CMC Lead / Manager',
+      job1P: `Own end-to-end CMC management for our pipeline, including US/China dual-filing compliance (FDA & CDE) and coordination with external manufacturing partners.`,
+      job2H3: 'Senior Manager, Medicinal Chemistry',
+      job2P: `Lead hit-to-lead optimization and PCC discovery, driving structure-activity relationship work through preclinical development.`,
+      job3H3: 'Research Assistant',
+      job3P: `Support CRO management, contract and financial administration, and R&D documentation across the medicinal chemistry program.`,
+      hiringNote: `Full job descriptions available on request — reach our HR contact, Ms. Hu, at`,
+      viewDetails: 'View full job description',
+      hideDetails: 'Hide job description',
+      dutiesLabel: 'Responsibilities',
+      reqsLabel: 'Requirements',
+      job1Loc: 'Location: Shanghai, Pudong',
+      job1Duties: [
+        `Own end-to-end CMC (chemistry, manufacturing and controls) management for the company's products.`,
+        `Handle CMC compliance requirements for US/China dual filing, ensuring submissions meet FDA and CDE standards.`,
+        `Manage external suppliers and deliver CMC work through supplier partnerships.`,
+        `Collaborate with internal R&D and clinical teams to support translation from clinic to manufacturing.`,
+      ],
+      job1Reqs: [
+        `US/China dual-filing experience; familiar with CMC compliance requirements in both jurisdictions.`,
+        `CMC work experience in the pharmaceutical or biotech industry.`,
+        `Master's degree or above.`,
+        `Able to work independently and wear multiple hats in a start-up environment.`,
+      ],
+      job2Loc: 'Location: Shanghai, Pudong',
+      job2Duties: [
+        `Lead hit-to-lead optimization and preclinical candidate (PCC) discovery, advancing innovative drug programs quickly and to a high standard.`,
+        `Drive structure-activity relationship (SAR) studies, using rational design to optimize potency, selectivity and drug-likeness (DMPK/safety).`,
+        `Own innovative drug R&D projects and organic synthesis management, solve key technical problems, and participate across the full project cycle — route design, milestone control and project management.`,
+        `Work cross-functionally with pharmacology, DMPK and toxicology teams to advance candidates into preclinical studies.`,
+      ],
+      job2Reqs: [
+        `Ph.D. in chemistry, medicinal chemistry or a related field.`,
+        `3+ years of innovative drug R&D experience; experience at a large multinational pharma company or leading research institute preferred.`,
+        `Expert in medicinal chemistry, organic synthesis and molecular design.`,
+        `Experience leading, or playing a key role in, advancing compounds from early discovery to clinical candidate preferred.`,
+        `Strong communication, execution, coordination and team-management skills.`,
+      ],
+      job3Duties: [
+        `CRO management (core): day-to-day communication and coordination with external CROs — progress tracking, sample shipment, data collection and organization; build and maintain a CRO ledger so timelines, deliverable quality and payment milestones stay clear and controlled; support CRO screening, evaluation and contract-negotiation preparation.`,
+        `Contract and finance support (core): help draft, track and file R&D contracts, agreements and CDAs; handle R&D invoice review, payment requests, budget tracking and expense reimbursement; help prepare monthly/quarterly R&D spend reports.`,
+        `Project and document management: help manage raw data, lab notebooks and stage reports for medicinal chemistry projects; archive, organize and version-control R&D documents to IND documentation standards; help prepare project progress reports.`,
+        `Cross-functional coordination: liaise with biology, toxicology, DMPK and regulatory teams; attend project meetings, take minutes and track action items.`,
+      ],
+      job3Reqs: [
+        `Education and experience: Bachelor's degree or above in medicinal chemistry, organic chemistry, pharmacy, biochemistry or a related field; 1–3 years in pharma/biotech (outstanding new graduates considered); CRO or research project management experience preferred.`,
+        `Skills: basic organic chemistry lab and data-analysis skills; proficient in Office (Excel, Word, PowerPoint), project-management software experience preferred; understanding of the drug development process.`,
+        `Attributes: meticulous and organized with contracts, invoices and data; strong communicator across external CROs and internal teams; proactive and able to deliver independently on schedule; eager to learn emerging areas such as PROTAC; risk-aware, able to flag issues in contract terms and project execution.`,
+      ],
     },
   },
   zh: {
-    nav: { home: '首頁', science: '科學原理', pipeline: '競爭格局', team: '核心團隊', partner: '合作洽談' },
-    footer1: 'DrugBridge｜QRK-005/007 口服 STAT6 降解劑計畫',
-    footer2: '本網站內容為截至 2026 年 8 月之公開資訊;如需最新進度,歡迎與我們聯繫。',
+    nav: { home: '首页', science: '科学原理', pipeline: '竞争格局', team: '核心团队', partner: '合作洽谈' },
+    footer1: 'DrugBridge｜QRK-007 / QRK-005 口服 STAT6 降解剂项目',
+    footer2: '本网站内容为截至 2026 年 8 月之公开信息;如需最新进度,欢迎与我们联系。',
     home: {
-      eyebrow: '口服 STAT6 降解劑平台',
-      h1: '為異位性皮膚炎而生的口服藥,療效比擬注射型生物製劑。',
-      lede: 'QRK-005 與 QRK-007 是 DrugBridge 自主開發的口服小分子 STAT6 降解劑,目標是讓生物製劑等級的療效,能透過每日一次的口服藥丸實現;而這個藥物類別,已獲市場驗證並日益受到關注。',
-      btnPartner: '洽談合作',
+      eyebrow: '口服 STAT6 降解剂平台',
+      h1: '为特应性皮炎而生的口服药,疗效比拟注射型生物制剂。',
+      lede: 'QRK-007 与 QRK-005 是 DrugBridge 自主开发的口服小分子 STAT6 降解剂,目标是让生物制剂等级的疗效,能通过每日一次的口服药实现——首先聚焦中重度特应性皮炎,并凭借相同的 Th2 通路机制,自然延伸至嗜酸性哮喘、COPD 等 2 型炎症疾病。',
+      btnPartner: '洽谈合作',
       btnScience: '了解作用原理',
-      stat1Num: '口服', stat1Lbl: '每日一次口服,無須注射',
-      stat2Num: '兩個候選藥物', stat2Lbl: '同一計畫,兩種互補的臨床前特性',
-      stat3Num: '臨床前', stat3Lbl: 'IND 預計 2027 年遞交,切入已獲驗證的領域',
-      whyNowH2: '為什麼是現在',
-      whyNowP1: '異位性皮膚炎背後的發炎訊號路徑,學界已研究得相當透徹;然而現行的生物製劑與口服療法,各自都有難以迴避的取捨——不是給藥的負擔,就是更廣泛的安全性風險。QRK-005/007 的設計,正是要以口服藥丸的形式,精準介入這條訊號的匯聚點。',
-      whyNowP2: '這並不是一條未經驗證的路。近兩年間,口服 STAT6 標靶療法已吸引大型藥廠投入,並累積了令人期待的早期臨床訊號。DrugBridge 切入的,是一個市場已經驗證過的類別,並帶著兩個具差異化的候選藥物,以及清晰的 IND 推進路徑。',
-      ctaH2: '需要完整的數據資料嗎?',
-      ctaP: '我們完整的臨床前數據,涵蓋療效、藥物動力學與安全性,將在簽署雙邊保密協議(CDA)後提供給合作夥伴。',
-      ctaBtn: '與我們聯繫',
+      stat1Num: '口服', stat1Lbl: '每日一次口服,无需每两周注射一次',
+      stat2Num: 'IND-enabling', stat2Lbl: '核心候选药物 QRK-007 已顺利推进到 IND-enabling 阶段,IND 预计 2027 年递交',
+      stat3Num: '两个候选药物', stat3Lbl: 'QRK-007 为核心项目,QRK-005 具备差异化的第二候选特性——可合并或分别对外授权',
+      whyNowH2: '为什么是现在',
+      whyNowP1: '特应性皮炎背后的炎症信号通路,学界已研究得相当透彻;然而现行的生物制剂与口服疗法,各自都有难以回避的取舍——不是给药的负担,就是更广泛的安全性风险。QRK-007 与 QRK-005 的设计,正是要以口服药的形式,精准介入这条信号的汇聚点。而由于 STAT6 是 2 型炎症共同的“中枢节点”,同一机制也自然延伸至皮肤之外——嗜酸性哮喘、COPD 以及更广泛的 Th2 型炎症疾病。',
+      whyNowP2: '这并不是一条未经验证的路。近两年间,口服 STAT6 靶向疗法已吸引大型药厂投入,并累积了令人期待的早期临床信号。DrugBridge 切入的,是一个市场已经验证过的类别——核心候选药物已进入 IND-enabling 阶段,第二候选药物紧随其后,并拥有清晰的 IND 推进路径。',
+      aboutNote: 'DrugBridge 于 2025 年在上海成立,同年完成近千万人民币天使轮融资,并获认定为科技型中小企业。',
+      ctaH2: '需要完整的数据资料吗?',
+      ctaP: '我们完整的临床前数据,涵盖疗效、药物动力学与安全性,将在签署双边保密协议(CDA)后提供给合作伙伴。',
+      ctaBtn: '与我们联系',
     },
     science: {
-      eyebrow: '科學原理',
-      h1: '單一標靶,精準設計',
-      lede: '驅動異位性皮膚炎發炎反應的兩個訊號蛋白 IL-4 與 IL-13,最終都匯聚到同一個下游開關:STAT6。QRK-005 與 QRK-007 的設計目標,就是直接關掉這個開關。',
-      pillar1H3: '直擊源頭',
-      pillar1P: '直接作用在 STAT6 本身,單一分子即可涵蓋現行生物製劑與激酶抑制劑分屬兩類藥物才能處理的上游路徑。',
-      pillar2H3: '為選擇性而設計',
-      pillar2P: '兩個候選藥物都以高度專一性作用於 STAT6,不影響其他相關訊號蛋白——這正是安全性表現可望優於廣譜藥物的設計基礎。',
-      pillar3H3: '從一開始就為口服而生',
-      pillar3P: '以小分子口服藥丸的形式,在免除注射的前提下,達到生物製劑等級的療效。',
-      validatedH2: '一條已獲驗證的路徑',
-      validatedP: '口服 STAT6 標靶療法是目前相當活躍、也備受關注的類別:多項計畫正處於臨床與臨床前開發階段,其中數項已獲大型藥廠合作背書。此類別中進度最領先的計畫所公開的臨床訊號——標靶蛋白顯著降解,以及疾病嚴重度明顯改善——正支持著 DrugBridge 候選藥物所依據的核心生物學基礎。',
-      note: '完整的臨床前數據,涵蓋效價、藥物動力學、組織分布與安全藥理,將於簽署雙邊保密協議(CDA)後與合作夥伴分享。',
+      eyebrow: '科学原理',
+      h1: '单一靶点,精准设计',
+      lede: '驱动特应性皮炎炎症反应的两个信号蛋白 IL-4 与 IL-13——同样也驱动着包括嗜酸性哮喘、COPD 在内的整个 2 型(Th2)炎症疾病家族——最终都汇聚到同一个下游开关:STAT6。QRK-007 与 QRK-005 的设计目标,就是直接关掉这个开关。',
+      pillar1H3: '直击源头',
+      pillar1P: '直接作用在 STAT6 本身,单一分子即可涵盖现行生物制剂与激酶抑制剂分属两类药物才能处理的上游路径。',
+      pillar2H3: '为选择性而设计',
+      pillar2P: '两个候选药物都以高度专一性作用于 STAT6,不影响其他相关信号蛋白——这正是安全性表现可望优于广谱药物的设计基础。',
+      pillar3H3: '从一开始就为口服而生',
+      pillar3P: '以小分子口服药丸的形式,在免除注射的前提下,达到生物制剂等级的疗效。',
+      validatedH2: '一条已获验证的路径',
+      validatedP: '口服 STAT6 靶向疗法是目前相当活跃、也备受关注的类别:多项计划正处于临床与临床前开发阶段,其中数项已获大型药厂合作背书。此类别中进度最领先的计划所公开的临床信号——靶蛋白显著降解,以及疾病严重度明显改善——正支持着 DrugBridge 候选药物所依据的核心生物学基础。',
+      mechanismH2: '作用机制详解',
+      mechanismP: 'STAT6 是 IL-4/IL-13 通路中的特异性转录因子——Dupixent 的成功已充分验证了该通路在 Th2 型炎症疾病发生中的关键作用——并被视作 Th2 型炎症疾病的“中枢节点”。QRK-007 与 QRK-005 通过将 CRBN E3 泛素连接酶招募至 STAT6,形成三元复合物,使 STAT6 被多聚泛素化并经 26S 蛋白酶体降解,从而以催化、事件驱动的方式清除 STAT6 蛋白,实现对 IL-4/IL-13 通路的深度阻断,同时最大限度减少对 IL-2、IFN 等其他信号通路的干扰。相较 Dupixent,核心优势在于口服——患者依从性高,以及小分子——经济可负担性高;相较 JAK 抑制剂,核心优势在于安全性。',
+      candidatesH2: '两个候选药物,两种差异化特性',
+      candidatesP: '核心候选药物 QRK-007 是全球创新的口服小分子 STAT6 蛋白降解剂,已顺利推进到 IND-enabling 阶段,同靶点进度处于国内一梯队,并在渗透性、溶解度和靶组织分布方面具有差异化优势,显示良好的 Best-in-Class 潜力。QRK-005 则带来互补的特性:相较同靶点进展最快的 Kymera KT-621,QRK-005 具有高活性高游离、低人体代谢清除率、周制剂潜力,以及在 AD 疾病模型小鼠中表观药效起效快等差异化优势。',
+      marketH2: '庞大且未被满足的患者群体',
+      marketP: 'Th2 型炎症疾病是 21 世纪最常见的慢性疾病群之一。根据弗若斯特沙利文预测,2025 年中国与美国预计分别有 2,090 万名及 1,450 万名中重度特应性皮炎患者;据 Sanofi 统计,G7(美国、欧洲五国及日本)2023 年特应性皮炎患者合计约 3,209 万人,其中生物制剂系统治疗可及患者约 407 万人。因患者依从性(Dupixent 需每两周注射一次)、支付能力、长期安全性(JAK 抑制剂)等因素,系统治疗的渗透率并不高,数百万符合条件的患者仍未获得先进的系统疗法。目前特应性皮炎市场仍由 Dupixent 主导——2025 年 AD 适应症全球销售额约 125 亿美元,其中美国约 92 亿美元;口服 STAT6 降解剂一旦上市,有望颠覆疾病治疗方式。',
+      beyondH2: '不止于特应性皮炎',
+      beyondP: '由于 STAT6 是 2 型炎症共同的转录开关,Dupixent 的适应症已横跨皮肤科与呼吸科。同样的生物学基础,让 QRK-007 与 QRK-005 得以从中重度特应性皮炎自然延伸至中重度嗜酸性哮喘、COPD 等 Th2 型炎症疾病——一个超过 500 亿美元的全球蓝海市场,直接对标年销售额超 180 亿美元的自免药王 Dupixent。特应性皮炎是首选适应症;更广阔的 Th2 领域,则是这一项目与团队致力开拓的机会。',
+      note: '完整的临床前数据,涵盖效价、药物动力学、组织分布与安全药理,将于签署双边保密协议(CDA)后与合作伙伴分享。',
     },
     pipeline: {
-      eyebrow: '競爭格局',
-      h1: '競爭激烈的領域,領先仍有空間',
-      lede: '目前已核准的生物製劑與口服療法,在異位性皮膚炎的治療上各有取捨——不是給藥的便利性,就是安全性的暴露範圍。包括 DrugBridge 在內,一波口服 STAT6 計畫正競相填補這個缺口。',
-      compare1Name: '注射型生物製劑',
-      compare1Desc: '療效與安全性均已確立,但需定期注射——對需要長期用藥的慢性病患而言是實際的負擔。',
-      compare2Name: '口服 JAK 抑制劑',
-      compare2Desc: '起效快、服用方便,但廣譜的作用機轉伴隨著黑框警語(boxed warning)。',
-      compare3Name: '口服 STAT6 降解劑',
-      compare3Desc: 'DrugBridge 正在布局的類別——目標是以標靶口服藥的便利性,達到注射型藥物等級的療效,並有機會帶來更好的安全性表現。',
-      bettingH2: '大型藥廠已經在布局的領域',
-      bettingP: '全球目前有六項相互競爭的口服 STAT6 計畫正在開發中,其中四項已與大型藥廠達成合作——且多數是在任何第二期(Phase 2)數據問世之前就已簽約,足見此類別確實存在買方需求。至於臨床進度最領先的計畫,目前仍由開發商獨立持有,已公布令人期待的第一期(Phase 1)結果,現正推進第二期。DrugBridge 的 QRK-005/007 尚未對外授權,處於臨床前(Pre-IND)階段,將在這個市場已驗證的類別中,以數據品質與交易條件參與競爭。',
-      note: '完整的競爭計畫分析、交易條件與公開臨床數據,可應要求提供。競爭格局係反映截至 2026 年 8 月的公開資訊。',
+      eyebrow: '竞争格局',
+      h1: '竞争激烈的领域,领先仍有空间',
+      lede: '目前已获批的生物制剂与口服疗法,在特应性皮炎的治疗上各有取舍——不是给药的便利性,就是安全性的暴露范围。包括 DrugBridge 在内,一波口服 STAT6 项目正竞相填补这个缺口:首先是特应性皮炎,继而覆盖更广泛的 Th2 领域。',
+      candidatesH2: '在研管线',
+      cand1Name: 'QRK-007｜核心候选药物',
+      cand1Desc: '全球创新口服小分子 STAT6 蛋白降解剂,已顺利推进到 IND-enabling 阶段,同靶点进度处于国内一梯队;在渗透性、溶解度和靶组织分布方面具有差异化优势,显示良好的 Best-in-Class 潜力。定位为 Dupixent 的口服升级版本:同等深度的通路阻断,兼具口服给药便利与成本更低的优势。',
+      cand2Name: 'QRK-005｜第二候选药物',
+      cand2Desc: '具备自身差异化特性的互补分子:高活性高游离、低人体代谢清除率、周制剂潜力,以及 AD 疾病模型小鼠表观药效起效快——相较同靶点进展最快的 Kymera KT-621 的优势所在。可单独或与 QRK-007 一并对外合作。',
+      landscapeH2: '治疗格局',
+      compare1Name: '注射型生物制剂',
+      compare1Desc: '疗效与安全性均已确立——仅 Dupixent 年销售额即超过 180 亿美元——但需每两周注射一次,对需要长期用药的慢性病患而言是实际的负担与成本。',
+      compare2Name: '口服 JAK 抑制剂',
+      compare2Desc: '起效快、服用方便,但广谱的作用机制伴随着 FDA 黑框警告:感染、恶性肿瘤、主要不良心血管事件(MACE)与血栓。',
+      compare3Name: '口服 STAT6 降解剂',
+      compare3Desc: 'DrugBridge 正在布局的类别——注射型标准疗法的口服升级版,目标是以靶向口服药的便利性与经济性,达到注射型药物等级的疗效,并有机会带来更好的安全性表现。',
+      bettingH2: '大型药厂已经在布局的领域',
+      bettingP: '全球目前有六项相互竞争的口服 STAT6 计划正在开发中,其中四项已与大型药厂达成合作——且多数是在任何第二期(Phase 2)数据问世之前就已签约,足见此类别确实存在买方需求。至于临床进度最领先的计划,目前仍由开发商独立持有,已公布令人期待的第一期(Phase 1)结果,现正推进第二期。DrugBridge 的 QRK-007 与 QRK-005 尚未对外授权——QRK-007 处于 IND-enabling 阶段,QRK-005 紧随其后——将在这个市场已验证的类别中,以数据质量与交易条件参与竞争。',
+      ipP: 'DrugBridge 对该管线拥有完整自主知识产权:自 2025 年 9 月起已陆续递交 PCT 专利申请,涵盖核心分子及其衍生物,目前已收到国际检索报告,确认具备新颖性与创造性,显示良好的全球授权前景。',
+      note: '完整的竞争计划分析、交易条件与公开临床数据,可应要求提供。竞争格局系反映截至 2026 年 8 月的公开信息。',
     },
     team: {
-      eyebrow: '核心團隊',
-      h1: '由具備新藥上市實戰經驗的團隊打造',
-      lede: '領導團隊橫跨藥廠營運、法規事務與投資領域,並由具備深厚 CMC、毒理學與藥物化學經驗的執行團隊在後支援。',
-      titleGuodong: '總經理',
-      titleNingning: '執行董事暨副總經理',
-      titleSonglin: '首席科學家',
-      titleKan: '投資與融資總監',
-      titleQuan: 'CMC(化學、製造與管制)總監',
-      titleJun: '藥理與毒理總監',
-      titleJianbei: '藥物化學資深總監',
-      titleHuiliang: '顧問｜藥理學與標靶探索',
-      titleChangqing: '顧問｜藥物化學',
-      titleQiong: '顧問｜臨床前藥效與標靶驗證',
-      note: '完整團隊簡歷與資歷,可應要求提供。',
+      eyebrow: '核心团队',
+      h1: '由具备新药上市实战经验的团队打造',
+      lede: '领导团队横跨药厂运营、法规事务与投资领域,并由具备深厚 CMC、毒理学与药物化学经验的执行团队在后支持——具备从靶点立项到 IND 申报的全链条能力,也正是将 STAT6 项目从特应性皮炎延伸至更广泛 Th2 领域所需的实力。',
+      tierCore: '联合创始人暨核心管理团队',
+      tierExec: '主要执行团队',
+      tierAdvisors: '主要科学顾问',
+      nameGuodong: '杨国栋 先生',
+      titleGuodong: '联合创始人暨总经理',
+      bioGuodong: '执业药师,中国药科大学药剂学硕士。拥有超过 35 年生物制药产业与医药监管经验,自 2014 年 12 月起长期担任上市药企昂利康制药副总经理,负责业务策略规划与药物研究院管理;并曾任浙江省药品认证中心副主任。',
+      nameNingning: '谢宁宁 女士',
+      titleNingning: '联合创始人暨执行董事、副总经理',
+      bioNingning: '上海社科院经济学硕士,ACCA 会员。拥有 20 年生物医药产业研究投资与运营经验,曾在海通证券、东海证券资管、巨杉资产担任医药产业首席分析师、基金经理、投资总监等职务;投资过多个早期 Biotech 项目,并曾任拟上市药企麦济生物 CFO(同时也是其天使轮投资人)。',
+      nameSonglin: '徐松琳 博士',
+      titleSonglin: '联合创始人暨研发总监',
+      bioSonglin: '浙江海昶生物联合创始人。上海交通大学药剂学博士,俄亥俄州立大学博士后。深耕非病毒基因递送技术与复杂制剂技术,熟悉核酸药物以及微脂体、纳米粒、纳米晶、微球等复杂制剂的申报与研发产业化,并曾主导多个新药项目的完整研发流程。',
+      nameHuiliang: '张会亮 博士',
+      titleHuiliang: '首席科学家',
+      bioHuiliang: '美国天普大学医学遗传与生化系终身助理教授、博士生导师;北京大学生物学博士。专注心血管疾病与衰老机制研究,首度提出以线粒体质子漏作为抗衰老治疗靶点。获 NIH R35 等多项科研经费资助,担任 5 本国际期刊编辑,发表学术论文 40 余篇。',
+      nameKan: '叶侃',
+      titleKan: '投融资总监',
+      bioKan: '复旦大学遗传学硕士。拥有 15 年以上生物医药产业研究投资经验,兼具卖方与买方资历,熟悉财务分析、投融资与投资人关系等业务全流程;曾任湘财证券研究所首席医药分析师兼产业三部经理、睿谷投资研究总监、沙钢投资资深研究员等职,并获颁天眼中国最佳证券分析师等荣誉。',
+      nameQuan: '王铨',
+      titleQuan: 'CMC 总监',
+      bioQuan: '武汉大学有机化学硕士。拥有 22 年医药及精细化工研发经验,其中 16 年以上具备研发团队创建与管理经验。深耕小分子 CMC 全流程,涵盖 PPQ 生产、现场稽核及 CTD 格式 NDA 撰写与申报,并具备深厚的制程优化与放大能力。',
+      nameJun: '周军',
+      titleJun: '药理毒理总监',
+      bioJun: '上海交通大学兽医学硕士。拥有 20 年以上临床前研发经验,深耕毒理学、DMPK 与体内药理学,专长于非临床法规申报的全流程管理;曾主导或参与约 200 项 IND 计划及多项 NDA 上市申报,精通 GLP 规范与 ICH 及全球监管要求。',
+      nameJianbei: '席建备 博士',
+      titleJianbei: '高级药化总监',
+      bioJianbei: '华东师范大学有机化学博士。拥有 15 年以上小分子新药研发经验,先后任职于 GSK、药明康德、罗欣药业及映恩生物等知名药企;曾主导肿瘤与自体免疫领域多个 First-in-class 项目,累计产出 6 个 PCC,其中 2 项已取得中美双报 IND 许可并推进至临床二期。',
+      nameFangfang: '胡方方',
+      titleFangfang: '行政副总',
+      bioFangfang: '中国海洋大学会计学学士,美国纽约理工大学 MBA。拥有 17 年海尔集团全方位历练,具备会计、人力与营销复合专业背景,深耕工程管理与政企事务运营,并拥有深厚的上海当地政府与央国企资源,擅长策略拓展、资源整合与重大项目落地。',
+      nameChangqing: '韦昌青 博士',
+      titleChangqing: '科学顾问',
+      bioChangqing: '合肥羿科医药创办人;曾任年衍药业高级总监暨创新药物研发总负责人、药明康德新药研发部总监。负责药物化学分子设计与小分子管线开发,拥有 20 年新药研发资历,持有 20 余项国际专利、发表 10 余篇国际论文,并完成国内 10 余项创新药 IND 申报。',
+      nameQiong: '罗琼 博士',
+      titleQiong: '科学顾问',
+      bioQiong: '南京大学生命科学学院准聘助理教授/特聘研究员、博士生导师,负责分子临床前药效研究与靶点验证。研究方向为抗炎症免疫药理学,主持多项国家自然科学基金项目,并与多家知名药企合作,共同推动基础研究成果转化为创新疗法。',
+      note: '完整团队简历与资历,可应要求提供。',
     },
     partner: {
-      eyebrow: '合作洽談',
-      h1: '與我們洽談 QRK-005/007',
-      lede: '我們正在尋找合作夥伴,協助將 QRK-005/007 從臨床前階段推進至臨床。具體的合作洽詢,將在簽署雙邊保密協議(CDA)後,取得我們完整的 BD 簡報與數據資料。',
-      ask1H3: '對外授權(License-out)', ask1P: '區域或全球權利授權,搭配里程碑金與權利金架構。',
-      ask2H3: '共同開發', ask2P: '共同執行 IND 前準備與臨床開發,共享數據所有權。',
-      ask3H3: '股權投資', ask3P: '資本合作,並與計畫推進至 IND 的進度相互連動。',
+      eyebrow: '合作洽谈',
+      h1: '与我们洽谈 QRK-007 与 QRK-005',
+      lede: '我们正在寻找合作伙伴,协助将已进入 IND-enabling 阶段的 QRK-007 以及 QRK-005 推进至临床。两个候选药物可合并或分别合作。具体的合作洽询,将在签署双边保密协议(CDA)后,取得我们完整的 BD 演示文稿与数据资料。',
+      missionP: 'DrugBridge 是一个立足于蛋白降解、小核酸等新兴制药技术,并与未满足临床需求相结合的差异化新药研发平台。我们的使命,是结合这个平台与创新靶点研究、制药新技术,并通过与产学研的共赢合作,研发出患者可及、可负担的创新好药,为国内外健康事业做出贡献。QRK-007 与 QRK-005 正是这个使命的具体实践——目标打造一款超越海外竞争对手的 Best-in-Class STAT6 药物,并迈向全球市场。',
+      ask1H3: '对外授权(License-out)', ask1P: '区域或全球权利授权,可按单一候选药物或整体打包,搭配里程碑金与权利金架构。',
+      ask2H3: '共同开发', ask2P: '共同执行 IND 前准备与临床开发,共享数据所有权。',
+      ask3H3: '股权投资', ask3P: '资本合作,并与计划推进至 IND 的进度相互连动。',
       contactName: 'Fred Yang',
-      contactTitle: '業務開發顧問',
+      contactTitle: '业务开发顾问',
       contactEmail: 'chyang@drugbridge.com',
       contactMailto: 'mailto:chyang@drugbridge.com',
-      address: '上海市浦東區桃林路777號艾力大廈1109室',
+      address: '上海市浦东新区桃林路777弄1109室',
+      hiringH2: '招聘中',
+      hiringP: '欢迎加入我们,一起将 QRK-007 与 QRK-005 推向临床。以下为目前开放的职位空缺,如需完整职位说明或应聘,欢迎与我们的人资联系。',
+      job1H3: 'CMC 负责人/经理',
+      job1P: '负责公司产品 CMC(化学、生产与控制)全流程管理,对接中美双报合规要求(FDA/CDE),并管理外部供应商协作。',
+      job2H3: '药物化学高级经理',
+      job2P: '主导先导化合物优化(Hit-to-Lead)与临床前候选药物(PCC)发现,推动结构-活性关系(SAR)研究并贯穿临床前开发全流程。',
+      job3H3: '助理研究员',
+      job3P: '协助 CRO 管理、合约与财务行政作业,以及药物化学项目的研发文档管理。',
+      hiringNote: '完整职位说明可应要求提供,欢迎联系我们的人资胡女士:',
+      viewDetails: '查看完整职位说明',
+      hideDetails: '收起职位说明',
+      dutiesLabel: '岗位职责',
+      reqsLabel: '任职要求',
+      job1Loc: '工作地址:上海浦东',
+      job1Duties: [
+        '负责公司产品的 CMC(化学、生产和控制)全流程管理。',
+        '对接中美双报的 CMC 相关合规要求,确保符合 FDA 和 CDE 的申报标准。',
+        '管理外部供应商,通过供应商合作实现 CMC 相关工作的落地执行。',
+        '与内部研发、临床团队协作,支持产品从临床到生产的转化。',
+      ],
+      job1Reqs: [
+        '具备中美双报经验,熟悉 CMC 环节的中美合规要求。',
+        '有制药/生物技术行业 CMC 相关工作经验。',
+        '硕士及以上学历。',
+        '能够独立工作,适应初创公司身兼多职的工作模式。',
+      ],
+      job2Loc: '工作地点:上海浦东',
+      job2Duties: [
+        '负责先导化合物(Hit-to-Lead)优化及临床前候选药物(PCC)的发现,快速高效高质推进创新药项目。',
+        '主导结构-活性关系(SAR)研究,通过理性设计优化化合物活性、选择性及成药性(DMPK/安全性)。',
+        '负责创新药物研发项目、有机合成管理,关键技术难题解决等,参与项目整个流程,包括路线设计、研发节点把控、项目管理等。',
+        '参与跨部门协作,与药效学、药代动力学及毒理团队紧密配合,推进候选药物进入临床前研究。',
+      ],
+      job2Reqs: [
+        '化学、药物化学或相关领域的博士学位。',
+        '具有 3 年及以上研发创新药物工作经验,有海外大型制药公司或著名研究机构工作经验者优先。',
+        '精通药物化学、有机合成和分子设计。',
+        '有领导或作为主要参与者,将化合物从早期发现推进到临床候选化合物的经验者优先。',
+        '具有良好的沟通交流和执行能力、组织协调和团队管理能力。',
+      ],
+      job3Duties: [
+        'CRO 管理(核心):负责外部 CRO(合同研究组织)的日常沟通与协调,包括项目进度跟进、样品寄送、数据回收与整理;建立并维护 CRO 合作台账,确保各外包项目的执行进度、交付质量和付款节点清晰可控;协助进行 CRO 的筛选、评估和合同谈判准备工作。',
+        '合同与财务支持(核心):协助起草、跟进和归档研发相关的合同、协议、保密协议等文件;负责研发相关的发票审核、付款申请、预算跟踪和财务报销流程;协助编制月度/季度研发经费使用报表,确保预算执行透明可控。',
+        '项目与文档管理:协助管理药物化学项目的原始数据、实验记录本和阶段性报告;负责研发文件的归档、整理和版本控制,确保符合 IND 申报的文档规范;协助准备项目进展汇报材料。',
+        '跨部门协调:协助与生物、毒理、DMPK、注册等部门的沟通协调;参与项目会议,负责会议记录和行动项跟踪。',
+      ],
+      job3Reqs: [
+        '学历与经验:本科及以上学历,药物化学、有机化学、药学、生物化学或相关专业;1-3 年制药/生物技术行业相关工作经验(优秀应届生也可考虑);有 CRO 管理或科研项目管理经验者优先。',
+        '专业技能:具备基本的有机化学实验技能和数据分析能力;熟悉 Office 办公软件(Excel、Word、PPT),有项目管理软件使用经验者优先;了解药物研发流程的基本概念。',
+        '个人素质:细心、有条理,能够处理合同、发票、数据等细节工作;沟通能力强,能与外部 CRO 及内部多部门顺畅对接;主动性强,能独立跟进任务并按时交付;愿意学习新知识,快速熟悉 PROTAC 等前沿技术领域;具有风险意识,能协助识别合同条款及项目执行中的潜在问题。',
+      ],
     },
   },
 };
 
 class Component extends DCLogic {
-  state = { page: 'home', lang: 'en' };
+  state = { page: 'home', lang: 'en', openJob: null };
   go(page) { this.setState({ page }); }
   toggleLang() { this.setState({ lang: this.state.lang === 'en' ? 'zh' : 'en' }); }
+  toggleJob(n) { this.setState({ openJob: this.state.openJob === n ? null : n }); }
   renderVals() {
     const p = this.state.page;
     const lang = this.state.lang;
     const t = T[lang];
+    const openJob = this.state.openJob;
+    const jobLabel = (n) => openJob === n ? t.partner.hideDetails : t.partner.viewDetails;
     const items = [
       { id: 'home', label: t.nav.home },
       { id: 'science', label: t.nav.science },
@@ -468,6 +762,9 @@ class Component extends DCLogic {
       isPipeline: p === 'pipeline',
       isTeam: p === 'team',
       isPartner: p === 'partner',
+      isJob1Open: openJob === 1, isJob2Open: openJob === 2, isJob3Open: openJob === 3,
+      toggleJob1: () => this.toggleJob(1), toggleJob2: () => this.toggleJob(2), toggleJob3: () => this.toggleJob(3),
+      job1ToggleLabel: jobLabel(1), job2ToggleLabel: jobLabel(2), job3ToggleLabel: jobLabel(3),
       goHome: () => this.go('home'),
       goScience: () => this.go('science'),
       goPartner: () => this.go('partner'),
