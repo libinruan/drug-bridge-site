@@ -73,6 +73,8 @@
     .contact-card h3 { font-family: var(--font-heading); font-weight: 700; font-size: 22px; margin: 0 0 8px; }
     .contact-card p { font-size: 15px; margin: 0 0 4px; color: color-mix(in srgb, var(--color-bg) 88%, transparent); }
     .contact-card a { color: var(--color-bg); font-weight: 700; }
+    .contact-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .contact-address { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--color-bg) 25%, transparent); }
     .jobs-row { align-items: start; }
     .job-toggle { display: inline-block; margin-top: 14px; padding: 0; border: none; background: none; font-family: var(--font-body); font-size: 13.5px; font-weight: 700; color: var(--color-accent-700); text-decoration: underline; cursor: pointer; }
     .job-toggle:hover { color: var(--color-accent-900); }
@@ -84,7 +86,7 @@
     .cta-band p { color: color-mix(in srgb, var(--color-text) 70%, transparent); font-size: 16px; margin: 0 0 24px; max-width: 560px; margin-left: auto; margin-right: auto; }
     .site-footer { border-top: 1px solid var(--color-divider); padding: 32px 56px; font-size: 13px; color: color-mix(in srgb, var(--color-text) 50%, transparent); display: flex; justify-content: space-between; gap: 24px; }
     @media (max-width: 860px) {
-      .stat-row, .pillar-row, .grid-3, .ask-row { grid-template-columns: 1fr; }
+      .stat-row, .pillar-row, .grid-3, .ask-row, .contact-row { grid-template-columns: 1fr; }
       .site-footer { flex-direction: column; }
     }
     @media (max-width: 640px) {
@@ -322,10 +324,19 @@
   </div>
 
   <div class="contact-card">
-    <h3>{{ t.partner.contactName }}</h3>
-    <p>{{ t.partner.contactTitle }}</p>
-    <p><a href="{{ t.partner.contactMailto }}">{{ t.partner.contactEmail }}</a></p>
-    <p>{{ t.partner.address }}</p>
+    <div class="contact-row">
+      <div>
+        <h3>{{ t.partner.contact1Name }}</h3>
+        <p>{{ t.partner.contact1Title }}</p>
+        <p><a href="{{ t.partner.contact1Mailto }}">{{ t.partner.contact1Email }}</a></p>
+      </div>
+      <div>
+        <h3>{{ t.partner.contact2Name }}</h3>
+        <p>{{ t.partner.contact2Title }}</p>
+        <p><a href="{{ t.partner.contact2Mailto }}">{{ t.partner.contact2Email }}</a></p>
+      </div>
+    </div>
+    <p class="contact-address">{{ t.partner.address }}</p>
   </div>
 
   <div class="section">
@@ -498,10 +509,14 @@ const T = {
       ask1H3: 'License-out', ask1P: 'Regional or global rights — per candidate or as a package — with milestone and royalty structure.',
       ask2H3: 'Co-development', ask2P: 'Shared IND-enabling and clinical development, joint data ownership.',
       ask3H3: 'Equity investment', ask3P: 'Capital partnership tied to program advancement toward IND.',
-      contactName: 'Dr. Li-Pin Juan',
-      contactTitle: 'BD Consultant',
-      contactEmail: 'lipin.juan@drugbridge.com',
-      contactMailto: 'mailto:lipin.juan@drugbridge.com',
+      contact1Name: 'Fred Yang',
+      contact1Title: 'BD Consultant',
+      contact1Email: 'chyang@drugbridge.com',
+      contact1Mailto: 'mailto:chyang@drugbridge.com',
+      contact2Name: 'Dr. Li-Pin Juan',
+      contact2Title: 'BD Consultant',
+      contact2Email: 'lipin.juan@drugbridge.com',
+      contact2Mailto: 'mailto:lipin.juan@drugbridge.com',
       address: 'Room 1109, Lane 777 Taolin Road, Pudong New Area, Shanghai, China',
       hiringH2: `We're hiring`,
       hiringP: `Join the team advancing QRK-007 and QRK-005 toward the clinic. Open roles below — write to our HR contact for the full job description or to apply.`,
@@ -670,10 +685,14 @@ const T = {
       ask1H3: '对外授权(License-out)', ask1P: '区域或全球权利授权,可按单一候选药物或整体打包,搭配里程碑金与权利金架构。',
       ask2H3: '共同开发', ask2P: '共同执行 IND 前准备与临床开发,共享数据所有权。',
       ask3H3: '股权投资', ask3P: '资本合作,并与计划推进至 IND 的进度相互连动。',
-      contactName: 'Fred Yang',
-      contactTitle: '业务开发顾问',
-      contactEmail: 'chyang@drugbridge.com',
-      contactMailto: 'mailto:chyang@drugbridge.com',
+      contact1Name: 'Fred Yang',
+      contact1Title: '业务开发顾问',
+      contact1Email: 'chyang@drugbridge.com',
+      contact1Mailto: 'mailto:chyang@drugbridge.com',
+      contact2Name: 'Dr. Li-Pin Juan',
+      contact2Title: '业务开发顾问',
+      contact2Email: 'lipin.juan@drugbridge.com',
+      contact2Mailto: 'mailto:lipin.juan@drugbridge.com',
       address: '上海市浦东新区桃林路777弄1109室',
       hiringH2: '招聘中',
       hiringP: '欢迎加入我们,一起将 QRK-007 与 QRK-005 推向临床。以下为目前开放的职位空缺,如需完整职位说明或应聘,欢迎与我们的人资联系。',
