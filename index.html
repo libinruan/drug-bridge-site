@@ -69,7 +69,7 @@
     .ask-card { border: 1px solid var(--color-divider); padding: 22px 24px; }
     .ask-card h3 { font-family: var(--font-heading); font-weight: 700; font-size: 18px; margin: 0 0 8px; }
     .ask-card p { font-size: 14px; line-height: 1.5; color: color-mix(in srgb, var(--color-text) 65%, transparent); margin: 0; }
-    .contact-card { margin-top: 56px; padding: 32px 36px; background: var(--color-accent-900); color: var(--color-bg); }
+    .contact-card { margin-top: 56px; padding: 32px 36px; background: var(--color-accent-900); color: var(--color-bg); scroll-margin-top: 96px; }
     .contact-card h3 { font-family: var(--font-heading); font-weight: 700; font-size: 22px; margin: 0 0 8px; }
     .contact-card p { font-size: 15px; margin: 0 0 4px; color: color-mix(in srgb, var(--color-bg) 88%, transparent); }
     .contact-card a { color: var(--color-bg); font-weight: 700; }
@@ -152,7 +152,7 @@
   <div class="cta-band">
     <h2 class="h2" style="font-size:26px;">{{ t.home.ctaH2 }}</h2>
     <p>{{ t.home.ctaP }}</p>
-    <button class="btn btn-primary" onClick="{{ goPartner }}">{{ t.home.ctaBtn }}</button>
+    <button class="btn btn-primary" onClick="{{ goPartnerContact }}">{{ t.home.ctaBtn }}</button>
   </div>
 </div>
 </sc-if>
@@ -323,7 +323,7 @@
     <div class="ask-card blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><h3>{{ t.partner.ask3H3 }}</h3><p>{{ t.partner.ask3P }}</p></div>
   </div>
 
-  <div class="contact-card">
+  <div class="contact-card" id="contact">
     <div class="contact-row">
       <div>
         <h3>{{ t.partner.contact1Name }}</h3>
@@ -750,10 +750,18 @@ const T = {
 };
 
 class Component extends DCLogic {
-  state = { page: 'home', lang: 'en', openJob: null };
+  state = { page: 'home', lang: 'en', openJob: null, scrollToContact: false };
   go(page) { this.setState({ page }); }
+  goPartnerContact() { this.setState({ page: 'partner', scrollToContact: true }); }
   toggleLang() { this.setState({ lang: this.state.lang === 'en' ? 'zh' : 'en' }); }
   toggleJob(n) { this.setState({ openJob: this.state.openJob === n ? null : n }); }
+  componentDidUpdate() {
+    if (this.state.page === 'partner' && this.state.scrollToContact) {
+      this.setState({ scrollToContact: false });
+      const el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
   renderVals() {
     const p = this.state.page;
     const lang = this.state.lang;
@@ -787,6 +795,7 @@ class Component extends DCLogic {
       goHome: () => this.go('home'),
       goScience: () => this.go('science'),
       goPartner: () => this.go('partner'),
+      goPartnerContact: () => this.goPartnerContact(),
       toggleLang: () => this.toggleLang(),
     };
   }
