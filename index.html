@@ -119,7 +119,7 @@
 <nav class="site-nav">
   <div class="site-brand" onClick="{{ goHome }}">Drug<span>Bridge</span></div>
   <div class="site-links">
-    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
       <button class="{{ item.cls }}" onClick="{{ item.go }}">{{ item.label }}</button>
     </sc-for>
     <button class="lang-toggle" onClick="{{ toggleLang }}">{{ langToggleLabel }}</button>
@@ -153,6 +153,24 @@
     <h2 class="h2" style="font-size:26px;">{{ t.home.ctaH2 }}</h2>
     <p>{{ t.home.ctaP }}</p>
     <button class="btn btn-primary" onClick="{{ goPartnerContact }}">{{ t.home.ctaBtn }}</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isVision }}" hint-placeholder-val="{{ false }}">
+<div class="page" data-screen-label="Vision">
+  <p class="eyebrow">{{ t.vision.eyebrow }}</p>
+  <h1 class="h1">{{ t.vision.h1 }}</h1>
+  <p class="lede">{{ t.vision.lede }}</p>
+
+  <div class="section">
+    <h2 class="h2">{{ t.vision.longH2 }}</h2>
+    <p class="prose">{{ t.vision.longP }}</p>
+  </div>
+
+  <div class="section">
+    <h2 class="h2">{{ t.vision.shortH2 }}</h2>
+    <p class="prose">{{ t.vision.shortP }}</p>
   </div>
 </div>
 </sc-if>
@@ -396,7 +414,7 @@
 <script type="text/x-dc" data-dc-script>
 const T = {
   en: {
-    nav: { home: 'Home', science: 'Science', pipeline: 'Pipeline', team: 'Team', partner: 'Partner' },
+    nav: { home: 'Home', vision: 'Vision', science: 'Science', pipeline: 'Pipeline', team: 'Team', partner: 'Partner' },
     footer1: 'DrugBridge — QRK-007 / QRK-005 Oral STAT6 Degrader Program',
     footer2: 'Site content reflects information available as of August 2026 — contact us for the latest update.',
     home: {
@@ -415,6 +433,15 @@ const T = {
       ctaH2: 'Want the full data package?',
       ctaP: `Our complete preclinical dataset — efficacy, pharmacokinetics, and safety — is available to partners under a mutual CDA.`,
       ctaBtn: 'Get in touch',
+    },
+    vision: {
+      eyebrow: 'Vision',
+      h1: 'Medicines patients need, can access, and can afford',
+      lede: `DrugBridge's long-term vision and near-term goal, as set out by the founding team.`,
+      longH2: 'Long-Term Vision',
+      longP: `Drawing on the diverse industry backgrounds of its founding team, DrugBridge is committed to combining unmet clinical needs, innovative target research, and new pharmaceutical technology — building a mutually beneficial industry-academia-research collaboration mechanism with leading universities and research institutions in China and abroad — to become "DrugBridge," and to develop innovative, good medicines that patients need, can access, and can afford, with the aim of making an outstanding contribution to China's innovative-drug industry and to global health.`,
+      shortH2: 'Short-Term Goal',
+      shortP: `The company has identified a preclinical candidate (PCC) molecule targeting STAT6 with high biological activity, strong druggability, good safety, and a differentiated pharmacodynamic profile. Our goal is to develop a Best-in-Class drug that surpasses international competitors — a domestically developed, oral medicine for Th2-type inflammatory diseases that is more effective, has fewer side effects, and is easier to use — and to bring it to the world.`,
     },
     science: {
       eyebrow: 'The Science',
@@ -572,7 +599,7 @@ const T = {
     },
   },
   zh: {
-    nav: { home: '首页', science: '科学原理', pipeline: '竞争格局', team: '核心团队', partner: '合作洽谈' },
+    nav: { home: '首页', vision: '愿景', science: '科学原理', pipeline: '竞争格局', team: '核心团队', partner: '合作洽谈' },
     footer1: 'DrugBridge｜QRK-007 / QRK-005 口服 STAT6 降解剂项目',
     footer2: '本网站内容为截至 2026 年 8 月之公开信息;如需最新进度,欢迎与我们联系。',
     home: {
@@ -591,6 +618,15 @@ const T = {
       ctaH2: '需要完整的数据资料吗?',
       ctaP: '我们完整的临床前数据,涵盖疗效、药物动力学与安全性,将在签署双边保密协议(CDA)后提供给合作伙伴。',
       ctaBtn: '与我们联系',
+    },
+    vision: {
+      eyebrow: '愿景',
+      h1: '患者需要、可及、可负担的创新好药',
+      lede: '创始团队所确立的长期愿景与短期目标。',
+      longH2: '长期愿景',
+      longP: '公司依托创始团队多元化的产业背景,致力于将未满足的临床需求、创新靶点研究和制药新技术应用相结合,构建与国内外知名高校及研究机构共赢的产学研合作机制,成为"DrugBridge",并研发出患者需要、可及、可负担的创新好药,旨在为国内创新药事业和全球健康事业做出杰出贡献。',
+      shortH2: '短期目标',
+      shortP: '公司已确立针对 STAT6 靶点具有高生物活性、成药性和安全性良好、表观药效具有差异化优势的 PCC 分子,希望研发出超越海外竞争对手的 Best-in-Class 药物,实现在 Th2 型炎症性疾病领域做出效果更好、副作用更低、使用便利的国产口服好药,并且走向世界。',
     },
     science: {
       eyebrow: '科学原理',
@@ -770,6 +806,7 @@ class Component extends DCLogic {
     const jobLabel = (n) => openJob === n ? t.partner.hideDetails : t.partner.viewDetails;
     const items = [
       { id: 'home', label: t.nav.home },
+      { id: 'vision', label: t.nav.vision },
       { id: 'science', label: t.nav.science },
       { id: 'pipeline', label: t.nav.pipeline },
       { id: 'team', label: t.nav.team },
@@ -785,6 +822,7 @@ class Component extends DCLogic {
       navItems,
       langToggleLabel: lang === 'en' ? '中文' : 'EN',
       isHome: p === 'home',
+      isVision: p === 'vision',
       isScience: p === 'science',
       isPipeline: p === 'pipeline',
       isTeam: p === 'team',
