@@ -53,6 +53,21 @@
     .compare-name { font-family: var(--font-heading); font-weight: 700; font-size: 18px; }
     .compare-desc { font-size: 15px; line-height: 1.5; color: color-mix(in srgb, var(--color-text) 68%, transparent); }
     .simple-note { font-size: 14px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-top: 28px; max-width: 680px; }
+    .pathway { position: relative; margin: 28px 0 4px; max-width: 380px; aspect-ratio: 400 / 322; }
+    .pathway svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .pathway-rect { fill: var(--color-bg); stroke: var(--color-divider); stroke-width: 1; }
+    .pathway-rect-target { fill: var(--color-accent-900); }
+    .pathway-arrow { stroke: var(--color-accent-700); stroke-width: 1.5; }
+    .pathway-arrowhead { fill: var(--color-accent-700); }
+    .pathway-mask { fill: var(--color-bg); }
+    .pathway-labels { position: absolute; inset: 0; }
+    .pathway-label, .pathway-sub, .pathway-convergence { position: absolute; left: 50%; width: 84%; margin: 0; transform: translate(-50%, -50%); text-align: center; }
+    .pathway-label { font-family: var(--font-heading); font-weight: 700; font-size: 13.5px; line-height: 1.25; color: var(--color-text); }
+    .pathway-label-lg { font-size: 17px; letter-spacing: 0.03em; }
+    .pathway-label-inv { color: var(--color-bg); }
+    .pathway-sub { font-family: var(--font-body); font-size: 11px; line-height: 1.3; color: color-mix(in srgb, var(--color-text) 58%, transparent); }
+    .pathway-sub-inv { color: color-mix(in srgb, var(--color-bg) 80%, transparent); }
+    .pathway-convergence { font-family: var(--font-body); font-style: italic; font-size: 10.5px; color: var(--color-accent-700); }
     .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
     .team-photo { aspect-ratio: 1; width: 100%; }
     .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -202,6 +217,34 @@
 
   <div class="section">
     <h2 class="h2">{{ t.science.mechanismH2 }}</h2>
+    <div class="pathway">
+      <svg viewBox="0 0 400 322" preserveAspectRatio="xMidYMid meet" role="img" aria-label="{{ t.science.pathwayAlt }}">
+        <rect class="pathway-rect" x="30" y="10" width="340" height="44" rx="2"></rect>
+        <line class="pathway-arrow" x1="200" y1="54" x2="200" y2="69"></line>
+        <polygon class="pathway-arrowhead" points="193,69 207,69 200,77"></polygon>
+
+        <rect class="pathway-rect" x="30" y="76" width="340" height="58" rx="2"></rect>
+        <line class="pathway-arrow" x1="200" y1="134" x2="200" y2="149"></line>
+        <polygon class="pathway-arrowhead" points="193,149 207,149 200,157"></polygon>
+
+        <rect class="pathway-rect" x="30" y="156" width="340" height="58" rx="2"></rect>
+        <line class="pathway-arrow" x1="200" y1="214" x2="200" y2="239"></line>
+        <rect class="pathway-mask" x="130" y="222" width="140" height="18"></rect>
+        <polygon class="pathway-arrowhead" points="193,239 207,239 200,247"></polygon>
+
+        <rect class="pathway-rect-target" x="30" y="246" width="340" height="62" rx="2"></rect>
+      </svg>
+      <div class="pathway-labels">
+        <p class="pathway-label" style="top: 9.9%;">{{ t.science.pathwayCytokines }}</p>
+        <p class="pathway-label" style="top: 30.1%;">{{ t.science.pathwayReceptor }}</p>
+        <p class="pathway-sub" style="top: 36%;">{{ t.science.pathwayReceptorSub }}</p>
+        <p class="pathway-label" style="top: 55%;">{{ t.science.pathwayJak }}</p>
+        <p class="pathway-sub" style="top: 60.9%;">{{ t.science.pathwayJakSub }}</p>
+        <p class="pathway-convergence" style="top: 71.7%;">{{ t.science.pathwayConvergence }}</p>
+        <p class="pathway-label pathway-label-lg pathway-label-inv" style="top: 83.9%;">{{ t.science.pathwayTarget }}</p>
+        <p class="pathway-sub pathway-sub-inv" style="top: 90.7%;">{{ t.science.pathwayTargetSub }}</p>
+      </div>
+    </div>
     <p class="prose">{{ t.science.mechanismP }}</p>
   </div>
 
@@ -455,6 +498,15 @@ const T = {
       validatedH2: 'A validated approach',
       validatedP: `Oral STAT6-targeted therapy is an active, closely watched category: multiple programs are in clinical and preclinical development, several already backed by major pharmaceutical partnerships. Public clinical signals from the most advanced program in the class — degradation of the target protein alongside meaningful improvement in disease severity — support the underlying biology DrugBridge's candidates are built on.`,
       mechanismH2: 'How the mechanism works',
+      pathwayAlt: `Pathway diagram: IL-4 and IL-13 cytokines activate receptor complexes, which Dupixent blocks; downstream JAK1/JAK3 kinases, which JAK inhibitors block; both converge on STAT6, the point where QRK-007 and QRK-005 act.`,
+      pathwayCytokines: 'IL-4 & IL-13 Cytokines',
+      pathwayReceptor: 'Receptor Complexes (IL-4Rα)',
+      pathwayReceptorSub: 'Blocked by Dupixent',
+      pathwayJak: 'JAK1 & JAK3 Kinases',
+      pathwayJakSub: 'Blocked by JAK inhibitors',
+      pathwayConvergence: 'Point of convergence',
+      pathwayTarget: 'STAT6',
+      pathwayTargetSub: 'Degraded by QRK-007 / QRK-005',
       mechanismP: `STAT6 is the specific transcription factor of the IL-4/IL-13 pathway — the pathway Dupixent's success validated as central to Th2 inflammation — and is regarded as the "central node" of type 2 inflammatory disease. QRK-007 and QRK-005 recruit a CRBN E3 ubiquitin ligase to STAT6, forming a ternary complex that drives STAT6 polyubiquitination and clearance by the 26S proteasome. This catalytic, event-driven degradation removes STAT6 protein outright, achieving deep blockade of IL-4/IL-13 signaling while largely sparing adjacent pathways such as IL-2 and IFN. Against Dupixent, the core advantages are oral dosing (adherence) and small-molecule economics (affordability); against JAK inhibitors, the core advantage is safety — minimal interference with other signaling pathways.`,
       candidatesH2: 'Two candidates, two differentiated profiles',
       candidatesP: `QRK-007, the lead candidate, is a globally novel oral STAT6 degrader now in IND-enabling studies — in the first tier of domestic programs against this target — and is differentiated on permeability, solubility, and target-tissue distribution, with strong Best-in-Class potential. QRK-005 brings a complementary profile: versus Kymera's KT-621, the most clinically advanced program in the class, it is designed for higher potency at higher free fraction, lower human metabolic clearance, potential for weekly dosing, and faster onset of efficacy in AD mouse models.`,
@@ -640,6 +692,15 @@ const T = {
       validatedH2: '一条已获验证的路径',
       validatedP: '口服 STAT6 靶向疗法是目前相当活跃、也备受关注的类别:多项计划正处于临床与临床前开发阶段,其中数项已获大型药厂合作背书。此类别中进度最领先的计划所公开的临床信号——靶蛋白显著降解,以及疾病严重度明显改善——正支持着 DrugBridge 候选药物所依据的核心生物学基础。',
       mechanismH2: '作用机制详解',
+      pathwayAlt: '通路示意图:IL-4 与 IL-13 细胞因子激活受体复合物,该步骤被 Dupixent 阻断;下游 JAK1/JAK3 激酶,该步骤被 JAK 抑制剂阻断;两条路径最终都汇聚于 STAT6,即 QRK-007 与 QRK-005 发挥作用之处。',
+      pathwayCytokines: 'IL-4 与 IL-13 细胞因子',
+      pathwayReceptor: '受体复合物(IL-4Rα)',
+      pathwayReceptorSub: '被 Dupixent 阻断',
+      pathwayJak: 'JAK1 与 JAK3 激酶',
+      pathwayJakSub: '被 JAK 抑制剂阻断',
+      pathwayConvergence: '通路汇聚点',
+      pathwayTarget: 'STAT6',
+      pathwayTargetSub: '被 QRK-007 / QRK-005 降解',
       mechanismP: 'STAT6 是 IL-4/IL-13 通路中的特异性转录因子——Dupixent 的成功已充分验证了该通路在 Th2 型炎症疾病发生中的关键作用——并被视作 Th2 型炎症疾病的“中枢节点”。QRK-007 与 QRK-005 通过将 CRBN E3 泛素连接酶招募至 STAT6,形成三元复合物,使 STAT6 被多聚泛素化并经 26S 蛋白酶体降解,从而以催化、事件驱动的方式清除 STAT6 蛋白,实现对 IL-4/IL-13 通路的深度阻断,同时最大限度减少对 IL-2、IFN 等其他信号通路的干扰。相较 Dupixent,核心优势在于口服——患者依从性高,以及小分子——经济可负担性高;相较 JAK 抑制剂,核心优势在于安全性。',
       candidatesH2: '两个候选药物,两种差异化特性',
       candidatesP: '核心候选药物 QRK-007 是全球创新的口服小分子 STAT6 蛋白降解剂,已顺利推进到 IND-enabling 阶段,同靶点进度处于国内一梯队,并在渗透性、溶解度和靶组织分布方面具有差异化优势,显示良好的 Best-in-Class 潜力。QRK-005 则带来互补的特性:相较同靶点进展最快的 Kymera KT-621,QRK-005 具有高活性高游离、低人体代谢清除率、周制剂潜力,以及在 AD 疾病模型小鼠中表观药效起效快等差异化优势。',
